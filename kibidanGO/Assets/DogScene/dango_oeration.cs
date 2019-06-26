@@ -22,28 +22,6 @@ public class dango_oeration : MonoBehaviour
 
     void Update()
     {
-
-        /*if(Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            switch (touch.phase) {
-
-                case TouchPhase.Began:
-                    Dango_display();
-                    break;
-
-                case TouchPhase.Moved:
-                    Dango_pos();
-                    break;
-
-                case TouchPhase.Ended:
-                    Dango_throw();
-                    break;
-            }
-        }*/
-
-
         if (Input.GetMouseButtonDown(0) && dango_op) Dango_display();
         if (Input.GetMouseButton(0) && dango_op) Dango_pos();
         if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
@@ -74,7 +52,7 @@ public class dango_oeration : MonoBehaviour
     {
         Vector3 worldPos;
         ScreenPos = Input.mousePosition;
-        ScreenPos.z = 500.0f;
+        ScreenPos.z = 300.0f;
         worldPos = Camera.main.ScreenToWorldPoint(ScreenPos);
         return worldPos;
     }
@@ -96,7 +74,7 @@ public class dango_oeration : MonoBehaviour
             target.z += distance;
             SetTarget(60);
         }
-        else if (distance > 20)
+        else if (distance > 50)
         {
 
             target = targetObj.transform.position;
@@ -105,7 +83,7 @@ public class dango_oeration : MonoBehaviour
         else if (distance > 3)
         {
             target = targetObj.transform.position;
-            target.z *= distance * 0.1f;
+            target.z =  distance * 12.0f;
             SetTarget(60);
         }
         else
