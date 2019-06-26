@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OniScript : MonoBehaviour
+public class Oni_OniScript : MonoBehaviour
 {
     private int m_oniHP = 500;
     public int OniHP
@@ -16,7 +16,7 @@ public class OniScript : MonoBehaviour
     private bool m_oniupper;
     private bool m_onimiddle;
     private bool m_onilower;
-
+    
     // Start is called before the first frame update
     void Start()
     {
