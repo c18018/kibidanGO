@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dog
   - Oni
+  - MonkeyPos
+  - Monkey
   layers:
   - Default
   - TransparentFX
