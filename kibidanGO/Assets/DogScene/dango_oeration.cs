@@ -18,11 +18,11 @@ public class dango_oeration : MonoBehaviour
 
     private bool dango_op = true;//団子の操作をしていいかどうか
 
-
+    private Vector3 dangoPos = new Vector3(0, -64, 300);
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && dango_op) Dango_display();
+        //if (Input.GetMouseButtonDown(0) && dango_op) Dango_display();
         if (Input.GetMouseButton(0) && dango_op) Dango_pos();
         if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
     }
@@ -58,16 +58,17 @@ public class dango_oeration : MonoBehaviour
     }
 
 
+    Vector3 flick_offset;//フリックの初めと終わりの地点の差
 
     //タップをやめた時
     void Dango_throw()
     {
         dango_op = false;
+        flick_offset = trajectory[0] - trajectory[trajectory.Length - 1];
         distance = (trajectory[0] - trajectory[trajectory.Length - 1]).magnitude;
         targetObj = GameObject.FindGameObjectWithTag("Dog");
-        Debug.Log(distance);
+        
 
-        //一つ前のフレームの位置との差が10より大きければフリックとみなす
         if (distance > 200)
         {
             target = targetObj.transform.position;
@@ -88,11 +89,11 @@ public class dango_oeration : MonoBehaviour
         }
         else
         {
-            dango.SetActive(false);
             dango_op = true;
         }
 
         Initialize();
+        dango.transform.position = dangoPos;
     }
 
 
@@ -123,17 +124,20 @@ public class dango_oeration : MonoBehaviour
     //団子の放物線
     IEnumerator Throw()
     {
+        float x = 0.0f;
         float b = Mathf.Tan(deg * Mathf.Deg2Rad);
         float a = (target.y - b * target.z) / (target.z * target.z);
 
         for (float z = 0; z <= target.z; z += 5.0f)
         {
             float y = a * z * z + b * z;
-            dango.transform.position = new Vector3(0, y, z) + offset;
+            x += flick_offset.x/1.0f;
+            dango.transform.position = new Vector3(x, y, z) + offset;
             yield return null;
         }
 
-        dango.SetActive(false);
+
+        dango.transform.position = dangoPos;
         dango_op = true;
     }
 
