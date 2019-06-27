@@ -89,11 +89,11 @@ public class dango_oeration : MonoBehaviour
         }
         else
         {
-            dango_op = true;
+            dango.SetActive(false);
+            Invoke("DangoPos0", 1.0f);
         }
 
         Initialize();
-        dango.transform.position = dangoPos;
     }
 
 
@@ -131,15 +131,21 @@ public class dango_oeration : MonoBehaviour
         for (float z = 0; z <= target.z; z += 5.0f)
         {
             float y = a * z * z + b * z;
-            x += flick_offset.x/1.0f;
+            x += flick_offset.x/16.0f;
             dango.transform.position = new Vector3(x, y, z) + offset;
             yield return null;
         }
 
-
-        dango.transform.position = dangoPos;
-        dango_op = true;
+        dango.SetActive(false);
+        Invoke("DangoPos0", 1.0f);
     }
 
 
+
+    private void DangoPos0()
+    {
+        dango.transform.position = dangoPos;
+        dango.SetActive(true);
+        dango_op = true;
+    }
 }
