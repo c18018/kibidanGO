@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dango_oeration : MonoBehaviour
+public class d_dangoOp : MonoBehaviour
 {
     public GameObject dango;
     private Vector3 ScreenPos;//タップした地点のスクリーン座標
