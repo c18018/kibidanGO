@@ -6,9 +6,12 @@ public class d_dangoOp : MonoBehaviour
 {
     public GameObject dango;
     private Vector3 ScreenPos;//タップした地点のスクリーン座標
+    private float dangoZ = 112.0f; //だんごの初期のZ位置
 
 
     private float distance;//フリックし始め、終わった位置の距離
+
+    private float intervalZ = 0;
 
 
     private Vector3[] trajectory = new Vector3[2];//２フレーム分の位置の配列
@@ -18,7 +21,12 @@ public class d_dangoOp : MonoBehaviour
 
     private bool dango_op = true;//団子の操作をしていいかどうか
 
-    private Vector3 dangoPos = new Vector3(0, -64, 300);
+    private Vector3 dangoPos = new Vector3(0, -24, 112);
+
+    private void Start()
+    {
+        dango.transform.position = dangoPos;
+    }
 
     void Update()
     {
@@ -52,7 +60,7 @@ public class d_dangoOp : MonoBehaviour
     {
         Vector3 worldPos;
         ScreenPos = Input.mousePosition;
-        ScreenPos.z = 300.0f;
+        ScreenPos.z = dangoZ;
         worldPos = Camera.main.ScreenToWorldPoint(ScreenPos);
         return worldPos;
     }
@@ -81,6 +89,7 @@ public class d_dangoOp : MonoBehaviour
         if (distance > 200)
         {
             target = targetObj.transform.position;
+            intervalZ = 15.0f;
             target.z += distance;
             SetTarget(30);
         }
@@ -88,12 +97,14 @@ public class d_dangoOp : MonoBehaviour
         {
 
             target = targetObj.transform.position;
+            intervalZ = 10.0f;
             SetTarget(30);
         }
         else if (distance > 3)
         {
             target = targetObj.transform.position;
-            target.z =  distance * 12.0f;
+            intervalZ = 1.0f;
+            target.z = (target.z - dangoZ)*distance*0.01f + dangoZ;
             SetTarget(30);
         }
         else
