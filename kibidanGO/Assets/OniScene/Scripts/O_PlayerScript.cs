@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class O_PlayerScript : MonoBehaviour
 {
     O_OniScript m_oniScript;
+    O_GameControllerScript m_gameConScript;
 
     bool m_buttonSelect = false;
     [System.NonSerialized] public bool onDogButton = false;
@@ -18,10 +19,15 @@ public class O_PlayerScript : MonoBehaviour
 
     int m_playerAttack;
 
+    float waitTime = 5.0f;
+
+    [System.NonSerialized] public bool countTime = false;
+
     // Start is called before the first frame update
     void Start()
     {
         m_oniScript = GameObject.FindGameObjectWithTag("Oni").GetComponent<O_OniScript>();
+        m_gameConScript = gameObject.GetComponentInChildren<O_GameControllerScript>();
 
         dogButton = GameObject.Find("DogButton").GetComponent<Button>();
         monkeyButton = GameObject.Find("MonkeyButton").GetComponent<Button>();
@@ -35,8 +41,11 @@ public class O_PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("イヌ： " + onDogButton + "サル： " + onMonkeyButton + "キジ： " + onPheasantButton);
-        Debug.Log(m_buttonSelect);
+        if (countTime)
+            m_gameConScript.Timer();
+
+        if (m_oniScript.OniHP <= 0)
+            m_oniScript.OniHP = 0;
     }
 
     public void OnClickedDogButton()
@@ -47,9 +56,6 @@ public class O_PlayerScript : MonoBehaviour
             onMonkeyButton = false;
             onPheasantButton = false;
         }
-
-        // StartCoroutine("OnAnyButtonClick");
-        //Debug.Log("イヌ : " + m_DogButton + m_onDogButton);
     }
 
     public void OnClickedMonkeyButton()
@@ -60,8 +66,6 @@ public class O_PlayerScript : MonoBehaviour
             onMonkeyButton = true;
             onPheasantButton = false;
         }
-        
-        //Debug.Log("サル : " + m_MonkeyButton + m_onMonkeyButton);
     }
 
     public void OnClickedPheasantButton()
@@ -102,33 +106,54 @@ public class O_PlayerScript : MonoBehaviour
 
     public IEnumerator PlayerButtonSelect()
     {
-        Debug.Log("PlayerButtonSelect Start");
         m_buttonSelect = true;
 
         dogButton.interactable = true;
         monkeyButton.interactable = true;
         pheasantButton.interactable = true;
 
+        waitTime = 5.0f;
+        m_gameConScript.waitTime = 6.0f;
+
+        if (m_oniScript.OniHP <= 150)
+        {
+            waitTime = 4.0f;
+            m_gameConScript.waitTime = 5.0f;
+        }
+
+        if (m_oniScript.OniHP <= 100)
+        {
+            waitTime = 3.0f;
+            m_gameConScript.waitTime = 4.0f;
+        }
+
+        if (m_oniScript.OniHP <= 50)
+        {
+            waitTime = 2.0f;
+            m_gameConScript.waitTime = 3.0f;
+        }
+
         if (m_buttonSelect)
         {
             if(!onDogButton && !onMonkeyButton && !onPheasantButton)
             {
-                yield return new WaitForSeconds(5.0f);
+                countTime = true;
+                yield return new WaitForSeconds(waitTime);
 
+                countTime = false;
                 m_buttonSelect = false;
-                //Debug.Log("Stop");
             }
             else
             {
                 onDogButton = false;
                 onMonkeyButton = false;
                 onPheasantButton = false;
-                
 
-                yield return new WaitForSeconds(5.0f);
+                countTime = true;
+                yield return new WaitForSeconds(waitTime);
 
+                countTime = false;
                 m_buttonSelect = false;
-                //Debug.Log("Stop");
             }
 
             if (onDogButton)
@@ -152,11 +177,6 @@ public class O_PlayerScript : MonoBehaviour
                 monkeyButton.interactable = false;
                 pheasantButton.interactable = false;
             }
-            Debug.Log("Stop");
         }
-
-
-
-        yield return null;
     }
 }
