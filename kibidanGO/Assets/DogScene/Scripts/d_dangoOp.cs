@@ -99,7 +99,7 @@ public class d_dangoOp : MonoBehaviour
         else
         {
             dango.SetActive(false);
-            Invoke("DangoPos0", 1.0f);
+            Invoke("DangoPos0", 0.5f);
         }
 
         Initialize();
@@ -146,7 +146,7 @@ public class d_dangoOp : MonoBehaviour
         }
         
         dango.SetActive(false);
-        Invoke("DangoPos0", 1.0f);
+        Invoke("DangoPos0", 0.5f);
     }
 
 
