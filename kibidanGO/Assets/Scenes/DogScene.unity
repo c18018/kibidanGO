@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820666247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -146, y: 0.65, z: 726}
+  m_LocalPosition: {x: -146, y: -183, z: 847}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144075899}
   - component: {fileID: 1144075898}
+  - component: {fileID: 1144075900}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -247,6 +248,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144075900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144075897}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bcbe32be82ee9641891ae6d38a31f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dango: {fileID: 2046368006}
 --- !u!1 &1682215892
 GameObject:
   m_ObjectHideFlags: 0

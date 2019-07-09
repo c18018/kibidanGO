@@ -68,24 +68,33 @@ public class d_dangoOp : MonoBehaviour
         distance = (trajectory[0] - trajectory[trajectory.Length - 1]).magnitude;
         targetObj = GameObject.FindGameObjectWithTag("Dog");
         
+        if(targetObj == null)
+        {
+            target = dango.transform.position * 5;
+            target.z += distance;
+            SetTarget(30);
+            Initialize();
+            return;
+        }
+
 
         if (distance > 200)
         {
             target = targetObj.transform.position;
             target.z += distance;
-            SetTarget(60);
+            SetTarget(30);
         }
         else if (distance > 50)
         {
 
             target = targetObj.transform.position;
-            SetTarget(60);
+            SetTarget(30);
         }
         else if (distance > 3)
         {
             target = targetObj.transform.position;
             target.z =  distance * 12.0f;
-            SetTarget(60);
+            SetTarget(30);
         }
         else
         {
@@ -128,14 +137,14 @@ public class d_dangoOp : MonoBehaviour
         float b = Mathf.Tan(deg * Mathf.Deg2Rad);
         float a = (target.y - b * target.z) / (target.z * target.z);
 
-        for (float z = 0; z <= target.z; z += 5.0f)
+        for (float z = 0; z <= target.z; z += 10.0f)
         {
             float y = a * z * z + b * z;
             x += flick_offset.x/16.0f;
             dango.transform.position = new Vector3(x, y, z) + offset;
             yield return null;
         }
-
+        
         dango.SetActive(false);
         Invoke("DangoPos0", 1.0f);
     }
