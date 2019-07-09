@@ -11,7 +11,7 @@ public class d_dangoOp : MonoBehaviour
 
     private float distance;//フリックし始め、終わった位置の距離
 
-    private float intervalZ = 0;
+    private float intervalZ = 0.0f;
 
 
     private Vector3[] trajectory = new Vector3[2];//２フレーム分の位置の配列
