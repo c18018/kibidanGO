@@ -23,6 +23,8 @@ public class d_dangoOp : MonoBehaviour
 
     private Vector3 dangoPos = new Vector3(0, -24, 112);
 
+    Touch touch;
+
     private void Start()
     {
         dango.transform.position = dangoPos;
@@ -30,19 +32,25 @@ public class d_dangoOp : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0) && dango_op) Dango_display();
+        /*
         if (Input.GetMouseButton(0) && dango_op) Dango_pos();
         if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
+        */
+
+        if (Input.touchCount > 0) {
+            touch = Input.GetTouch(0);
+        }
+        switch (touch.phase)
+        {
+            case TouchPhase.Moved :
+                if(dango_op) Dango_pos();
+                break;
+
+            case TouchPhase.Ended:
+                if (dango_op) Dango_throw();
+                break;
+        }
     }
-
-
-
-    //タップしたら団子を表示
-    void Dango_display()
-    {
-        dango.SetActive(true);
-    }
-
 
 
     //タップした地点に団子を移動
@@ -86,14 +94,14 @@ public class d_dangoOp : MonoBehaviour
         }
 
 
-        if (distance > 200)
+        if (distance > 50)
         {
             target = targetObj.transform.position;
             intervalZ = 15.0f;
             target.z += distance;
             SetTarget(30);
         }
-        else if (distance > 50)
+        else if (distance > 5)
         {
 
             target = targetObj.transform.position;
@@ -167,5 +175,12 @@ public class d_dangoOp : MonoBehaviour
         dango.transform.position = dangoPos;
         dango.SetActive(true);
         dango_op = true;
+    }
+
+
+    private void OnGUI()
+    {
+        GUI.skin.label.fontSize = 50;
+        GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)distance));
     }
 }
