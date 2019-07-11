@@ -1026,6 +1026,7 @@ GameObject:
   - component: {fileID: 1072612514}
   - component: {fileID: 1072612513}
   - component: {fileID: 1072612515}
+  - component: {fileID: 1072612516}
   m_Layer: 0
   m_Name: Oni_GameController
   m_TagString: GameController
@@ -1069,6 +1070,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec5547278e4f5184e92784da94daab24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1072612516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072612512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6852a58000958a3439a8598f2414ef4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1100066039

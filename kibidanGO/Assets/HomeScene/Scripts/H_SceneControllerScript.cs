@@ -23,7 +23,7 @@ public class H_SceneControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
 
         //friendsButton = GameObject.FindGameObjectWithTag("FriendsButton").GetComponent<Button>();
         //dangoButton = GameObject.FindGameObjectWithTag("DangoButton").GetComponent<Button>();
@@ -36,8 +36,6 @@ public class H_SceneControllerScript : MonoBehaviour
     void Update()
     {
         HomeSceneActive();
-
-        OniSceneActive();
     }
 
     // あとでARのシーン遷移ができるか試す
@@ -71,21 +69,6 @@ public class H_SceneControllerScript : MonoBehaviour
         {
             isHomeScene = false;
         }
-        Debug.Log(isHomeScene);
-        Debug.Log(SceneManager.GetActiveScene().name);
-    }
-
-    void OniSceneActive()
-    {
-        if(SceneManager.GetActiveScene().name == "OniScene")
-        {
-            haveDog = true;
-
-            Invoke("TestChangeScene", 2.0f);
-        }
-    }
-    void TestChangeScene()
-    {
-        SceneManager.LoadScene("HomeScene");
+        Debug.Log("HomeScene : " + isHomeScene);
     }
 }
