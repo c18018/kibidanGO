@@ -67,7 +67,12 @@ public class H_SceneControllerScript : MonoBehaviour
         {
             isHomeScene = true;
         }
+        else
+        {
+            isHomeScene = false;
+        }
         Debug.Log(isHomeScene);
+        Debug.Log(SceneManager.GetActiveScene().name);
     }
 
     void OniSceneActive()
@@ -75,14 +80,12 @@ public class H_SceneControllerScript : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "OniScene")
         {
             haveDog = true;
-            float time = 3;
-            if(time > 0)
-            {
-                time -= 1 * Time.deltaTime;
-            }
 
-            if (time <= 0)
-                SceneManager.LoadScene("HomeScene");
+            Invoke("TestChangeScene", 2.0f);
         }
+    }
+    void TestChangeScene()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 }
