@@ -22,9 +22,7 @@ public class d_dangoOp : MonoBehaviour
     private bool dango_op = true;//団子の操作をしていいかどうか
 
     private Vector3 dangoPos = new Vector3(0, -24, 112);
-
-    Touch touch;
-
+    
 
     private void Start()
     {
@@ -33,29 +31,20 @@ public class d_dangoOp : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && dango_op) Dango_pos();
-        if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
+        //if (Input.GetMouseButton(0) && dango_op) Dango_pos();
+        //if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
 
-
-        /*if (Input.touchCount > 0) {
-            touch = Input.GetTouch(0);
-        }
-        switch (touch.phase)
-        {
-            case TouchPhase.Stationary:
-                if (dango_op) Dango_pos();
-                break;
-                
-            case TouchPhase.Moved :
-                if(dango_op) Dango_pos();
-                break;
-
-            case TouchPhase.Ended:
-                if (dango_op) Dango_throw();
-                break;
-        }*/
+        if (Input.touchCount > 0) TapInput();
+        
     }
-    
+
+
+    void TapInput()
+    {
+        Touch touch = Input.GetTouch(0);
+        if (dango_op && touch.phase == TouchPhase.Moved) Dango_pos();
+        if (dango_op && touch.phase == TouchPhase.Ended) Dango_throw();
+    }
 
 
     //タップした地点に団子を移動
@@ -106,25 +95,25 @@ public class d_dangoOp : MonoBehaviour
             target.z += distance;
             SetTarget(30);
         }
-        else if (distance > 10)
+        else if (distance > 20)
         {
 
             target = targetObj.transform.position;
             intervalZ = 10.0f;
             SetTarget(30);
         }
-        else
+        else if(distance > 5)
         {
             target = targetObj.transform.position;
             intervalZ = 1.0f;
             target.z = (target.z - dangoZ)*distance*0.01f + dangoZ;
             SetTarget(30);
         }
-        /*else
+        else
         {
             dango.SetActive(false);
             Invoke("DangoPos0", 0.5f);
-        }*/
+        }
 
         Initialize();
     }
