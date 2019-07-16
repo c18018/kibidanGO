@@ -16,9 +16,9 @@ public class H_SceneControllerScript : MonoBehaviour
     bool isHomeScene = false;
 
     // 動物を持っているかどうか
-    bool haveDog = false;
-    bool haveMonkey = false;
-    bool havePheasant = false;
+    //bool haveDog = false;
+    //bool haveMonkey = false;
+    //bool havePheasant = false;
 
     // Start is called before the first frame update
     void Start()
