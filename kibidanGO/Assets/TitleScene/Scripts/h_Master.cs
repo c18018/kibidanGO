@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class h_Master : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class h_Master : MonoBehaviour
     [System.NonSerialized] public bool Monkey = false;
     [System.NonSerialized] public bool Pheasant = false;
 
+    GameObject relayObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,17 @@ public class h_Master : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Dog : " + Dog);
+        if (SceneManager.GetActiveScene().name == "DogScene") DogStatus();
+    }
+
+    void DogStatus()
+    {
+        ObjectGet();
+        dango_co = relayObj.GetComponent<d_dangoOp>().DangoCount();
+    }
+
+    void ObjectGet()
+    {
+        relayObj = GameObject.FindGameObjectWithTag("Relay");
     }
 }

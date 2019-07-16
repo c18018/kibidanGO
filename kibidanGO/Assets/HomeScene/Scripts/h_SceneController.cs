@@ -6,26 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class h_SceneController : MonoBehaviour
 {
+    // 動物を探しに行くボタン
     Button friendsButton;
+    // ダンゴを作るボタン
     Button dangoButton;
+
+    //[System.NonSerialized] public int walk_co = 0;
 
     // テスト用ボタン
     Button testButton;
-
-    // ホームにいるかどうか
-    bool isHomeScene = false;
-
-    // 動物を持っているかどうか
-    //bool haveDog = false;
-    //bool haveMonkey = false;
-    //bool havePheasant = false;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        // DontDestroyOnLoad(this.gameObject);
-
-        //friendsButton = GameObject.FindGameObjectWithTag("FriendsButton").GetComponent<Button>();
+        // あとでTagに替える
+        friendsButton = GameObject.Find("FriendsButton").GetComponent<Button>();
         //dangoButton = GameObject.FindGameObjectWithTag("DangoButton").GetComponent<Button>();
 
         // テスト用
@@ -35,40 +30,24 @@ public class h_SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HomeSceneActive();
+
     }
 
-    // あとでARのシーン遷移ができるか試す
-    /*void ChangeARScene()
+    public void OnClickedFriendsButton()
+    {
+        ChangeARCameraScene();
+    }
+
+    // ARCameraシーンに遷移する
+    void ChangeARCameraScene()
     {
         SceneManager.LoadScene("ARCamera");
-    }*/
-
-    void TestFlag()
-    {
-
+        //walk_co += 1; 
     }
-
-    /*public void OnClickedFriendsButton()
-    {
-
-    }*/
 
     public void OnClickedTestButton()
     {
         SceneManager.LoadScene("OniScene");
-    }
-
-    void HomeSceneActive()
-    {
-        if (SceneManager.GetActiveScene().name == "HomeScene")
-        {
-            isHomeScene = true;
-        }
-        else
-        {
-            isHomeScene = false;
-        }
-        Debug.Log("HomeScene : " + isHomeScene);
+        //walk_co += 1;
     }
 }
