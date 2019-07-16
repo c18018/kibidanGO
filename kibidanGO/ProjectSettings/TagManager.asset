@@ -10,6 +10,7 @@ TagManager:
   - Monkey
   - Master
   - Relay
+  - Dango
   layers:
   - Default
   - TransparentFX

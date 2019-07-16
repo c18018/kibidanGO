@@ -33,16 +33,16 @@ public class d_dogTarget : MonoBehaviour
             Debug.Log("ok");
         }
 
-        if (get_co >= 3)
+        if (get_co >= 3 && !Dog)
         {
             Dog = true;
             Debug.Log(Dog);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other)
     {
-        if(gameObject.tag == "Dango")
+        if (other.gameObject.tag == "Dango")
         {
             get_co++;
         }
