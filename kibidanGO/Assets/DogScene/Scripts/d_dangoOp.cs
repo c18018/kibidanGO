@@ -12,6 +12,7 @@ public class d_dangoOp : MonoBehaviour
     private float distance;//フリックし始め、終わった位置の距離
 
     private float intervalZ = 0.0f;
+    int dango_co = 10;
 
 
     private Vector3[] trajectory = new Vector3[2];//２フレーム分の位置の配列
@@ -22,19 +23,20 @@ public class d_dangoOp : MonoBehaviour
     private bool dango_op = true;//団子の操作をしていいかどうか
 
     private Vector3 dangoPos = new Vector3(0, -24, 112);
-    
+    GameObject master = null;
 
     private void Start()
     {
         dango.transform.position = dangoPos;
+        master = GameObject.FindGameObjectWithTag("Master");
     }
 
     void Update()
     {
-        //if (Input.GetMouseButton(0) && dango_op) Dango_pos();
-        //if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
+        if (Input.GetMouseButton(0) && dango_op) Dango_pos();
+        if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
 
-        if (Input.touchCount > 0) TapInput();
+        //if (Input.touchCount > 0) TapInput();
         
     }
 
@@ -167,7 +169,11 @@ public class d_dangoOp : MonoBehaviour
     private void DangoPos0()
     {
         dango.transform.position = dangoPos;
-        dango.SetActive(true);
+        if (dango_co > 0)
+        {
+            dango_co--;
+            dango.SetActive(true);
+        }
         dango_op = true;
     }
 
@@ -175,7 +181,12 @@ public class d_dangoOp : MonoBehaviour
     private void OnGUI()
     {
         GUI.skin.label.fontSize = 50;
-        GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)distance));
+        GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)dango_co));
+    }
+
+    public int DangoCount()
+    {
+        return dango_co;
     }
     
 }

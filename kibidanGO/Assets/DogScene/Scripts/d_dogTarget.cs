@@ -6,6 +6,8 @@ public class d_dogTarget : MonoBehaviour
 {
 
     GameObject appearObj = null;
+    int get_co = 0;
+    public bool Dog = false;
 
     bool dog_display = true; //犬のオブジェクトを表示していいかどうか
 
@@ -29,6 +31,20 @@ public class d_dogTarget : MonoBehaviour
         {
             appearObj.SetActive(true);
             Debug.Log("ok");
+        }
+
+        if (get_co >= 3)
+        {
+            Dog = true;
+            Debug.Log(Dog);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(gameObject.tag == "Dango")
+        {
+            get_co++;
         }
     }
 }
