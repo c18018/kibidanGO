@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class H_SceneControllerScript : MonoBehaviour
+public class h_SceneController : MonoBehaviour
 {
     Button friendsButton;
     Button dangoButton;

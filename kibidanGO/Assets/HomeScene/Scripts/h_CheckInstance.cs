@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class H_CheckInstanceScript : MonoBehaviour
+public class h_CheckInstance : MonoBehaviour
 {
-    public static H_CheckInstanceScript instance = null;
+    public static h_CheckInstance instance = null;
 
-    public static H_CheckInstanceScript Instance
+    public static h_CheckInstance Instance
     {
-        get { return H_CheckInstanceScript.instance; }
+        get { return h_CheckInstance.instance; }
     }
-
-    [System.NonSerialized] public static bool haveDog = false;
 
     private void Awake()
     {
@@ -35,6 +33,6 @@ public class H_CheckInstanceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("haveDog : " + haveDog);
+
     }
 }

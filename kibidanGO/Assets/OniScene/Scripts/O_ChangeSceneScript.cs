@@ -5,19 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class O_ChangeSceneScript : MonoBehaviour
 {
-    H_CheckInstanceScript instanceScript;
+    h_Master masterScript;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        H_CheckInstanceScript.haveDog = true;
-
+        masterScript.Dog = true;
         Invoke("TestChangeScene", 2.0f);
     }
 

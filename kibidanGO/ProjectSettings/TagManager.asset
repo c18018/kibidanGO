@@ -8,6 +8,8 @@ TagManager:
   - Oni
   - MonkeyPos
   - Monkey
+  - Master
+  - Relay
   layers:
   - Default
   - TransparentFX
