@@ -29,6 +29,7 @@ public class d_dangoOp : MonoBehaviour
     {
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
+        dango_co = master.GetComponent<h_Master>().dango_co;
     }
 
     void Update()
