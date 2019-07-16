@@ -25,6 +25,7 @@ public class d_dangoOp : MonoBehaviour
 
     Touch touch;
 
+
     private void Start()
     {
         dango.transform.position = dangoPos;
@@ -32,16 +33,19 @@ public class d_dangoOp : MonoBehaviour
 
     void Update()
     {
-        /*
         if (Input.GetMouseButton(0) && dango_op) Dango_pos();
         if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
-        */
 
-        if (Input.touchCount > 0) {
+
+        /*if (Input.touchCount > 0) {
             touch = Input.GetTouch(0);
         }
         switch (touch.phase)
         {
+            case TouchPhase.Stationary:
+                if (dango_op) Dango_pos();
+                break;
+                
             case TouchPhase.Moved :
                 if(dango_op) Dango_pos();
                 break;
@@ -49,8 +53,9 @@ public class d_dangoOp : MonoBehaviour
             case TouchPhase.Ended:
                 if (dango_op) Dango_throw();
                 break;
-        }
+        }*/
     }
+    
 
 
     //タップした地点に団子を移動
@@ -94,32 +99,32 @@ public class d_dangoOp : MonoBehaviour
         }
 
 
-        if (distance > 50)
+        if (distance > 100)
         {
             target = targetObj.transform.position;
             intervalZ = 15.0f;
             target.z += distance;
             SetTarget(30);
         }
-        else if (distance > 5)
+        else if (distance > 10)
         {
 
             target = targetObj.transform.position;
             intervalZ = 10.0f;
             SetTarget(30);
         }
-        else if (distance > 3)
+        else
         {
             target = targetObj.transform.position;
             intervalZ = 1.0f;
             target.z = (target.z - dangoZ)*distance*0.01f + dangoZ;
             SetTarget(30);
         }
-        else
+        /*else
         {
             dango.SetActive(false);
             Invoke("DangoPos0", 0.5f);
-        }
+        }*/
 
         Initialize();
     }
@@ -183,4 +188,5 @@ public class d_dangoOp : MonoBehaviour
         GUI.skin.label.fontSize = 50;
         GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)distance));
     }
+    
 }
