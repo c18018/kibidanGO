@@ -25,7 +25,7 @@ public class h_SceneController : MonoBehaviour
         //masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         // あとでTagに替える
         friendsButton = GameObject.Find("FriendsButton").GetComponent<Button>();
-        //dangoButton = GameObject.FindGameObjectWithTag("DangoButton").GetComponent<Button>();
+        dangoButton = GameObject.Find("DangoButton").GetComponent<Button>();
 
         // テスト用
         testButton = GameObject.FindGameObjectWithTag("Player").GetComponent<Button>();
@@ -42,6 +42,11 @@ public class h_SceneController : MonoBehaviour
         ChangeARCameraScene();
     }
 
+    public void OnClickedDangoButton()
+    {
+
+    }
+
     // ARCameraシーンに遷移する
     void ChangeARCameraScene()
     {
@@ -52,6 +57,7 @@ public class h_SceneController : MonoBehaviour
     public void OnClickedTestButton()
     {
         //SceneManager.LoadScene("OniScene");
+        h_GameController.getComp = true;
         test_co += 1;
     }
 
