@@ -15,7 +15,7 @@ public class a_TouchObj : MonoBehaviour
         master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         dangoAsset(mochi, master.mochi);
         dangoAsset(water, master.water);
-        dangoAsset(sugar, master.sugara);
+        dangoAsset(sugar, master.sugar);
     }
 
 
