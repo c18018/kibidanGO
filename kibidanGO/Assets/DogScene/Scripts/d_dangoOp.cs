@@ -15,6 +15,8 @@ public class d_dangoOp : MonoBehaviour
     private float intervalZ = 0.0f;
     int dango_co = 0;
 
+    
+
 
     private Vector3[] trajectory = new Vector3[2];//２フレーム分の位置の配列
 
@@ -32,6 +34,7 @@ public class d_dangoOp : MonoBehaviour
 
     private void Start()
     {
+        dango_op = true;
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
@@ -205,6 +208,7 @@ public class d_dangoOp : MonoBehaviour
 
     public void returnButton()
     {
+        dango_op = false;
         master.GetComponent<h_Master>().DogStatus();
         Invoke("sceneRe", 0.5f);
     }

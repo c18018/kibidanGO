@@ -57,4 +57,10 @@ public class a_TouchObj : MonoBehaviour
         }
         
     }
+
+
+    public void returnButton()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
 }
