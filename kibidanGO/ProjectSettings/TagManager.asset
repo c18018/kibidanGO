@@ -12,6 +12,8 @@ TagManager:
   - Relay
   - Dango
   - Mochi
+  - Water
+  - Sugar
   layers:
   - Default
   - TransparentFX
