@@ -18,6 +18,8 @@ public class h_Master : MonoBehaviour
     GameObject relayObj;
     bool findObj = true;
 
+    int dog_co = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +32,13 @@ public class h_Master : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "DogScene") DogStatus();
     }
 
-    void DogStatus()
+    public void DogStatus()
     {
         ObjectGet();
         dango_co = relayObj.GetComponent<d_dangoOp>().DangoCount();
+        dog_co = relayObj.GetComponent<d_dangoOp>().get_co;
+        if (dog_co >= 3)
+            Dog = true;
     }
 
     void ObjectGet()
