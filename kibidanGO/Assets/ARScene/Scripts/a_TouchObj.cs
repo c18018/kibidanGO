@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class a_TouchObj : MonoBehaviour
 {
-    int MochiCount = 0;
-    int WaterCount = 0;
-    int SugerCount = 0;
+    private h_Master master = null;
+    public GameObject mochi, water, sugar = null;
+
+
+    private void Start()
+    {
+        master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+    }
 
 
     void Update()
@@ -41,17 +47,17 @@ public class a_TouchObj : MonoBehaviour
 
             if (hit.collider.tag == "Mochi")
             {
-                MochiCount++;
+                //master.mochi = true;
             }
 
             if (hit.collider.tag == "Water")
             {
-                WaterCount++;
+                //master.water = true;
             }
 
-            if (hit.collider.tag == "Suger")
+            if (hit.collider.tag == "Sugar")
             {
-                SugerCount++;
+                //master.sugar = true;
             }
 
         }
