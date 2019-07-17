@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class d_dangoOp : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class d_dangoOp : MonoBehaviour
     public GameObject dog_relay = null;
     public int get_co = 0;
 
+    public GameObject end_display = null;
 
     private void Start()
     {
@@ -194,4 +196,21 @@ public class d_dangoOp : MonoBehaviour
         return dango_co;
     }
     
+
+    public void DogEnd()
+    {
+        dango_op = false;
+        end_display.SetActive(true);
+    }
+
+    public void returnButton()
+    {
+        master.GetComponent<h_Master>().DogStatus();
+        Invoke("sceneRe", 0.5f);
+    }
+
+    private void sceneRe()
+    {
+        SceneManager.LoadScene("ARCamera");
+    }
 }
