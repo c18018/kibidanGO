@@ -9,7 +9,7 @@ public class h_Master : MonoBehaviour
 
     [System.NonSerialized] public bool water = false;
     [System.NonSerialized] public bool mochi = false;
-    [System.NonSerialized] public bool sugara = false;
+    [System.NonSerialized] public bool sugar = false;
 
     [System.NonSerialized] public bool Dog = false;
     [System.NonSerialized] public bool Monkey = false;
