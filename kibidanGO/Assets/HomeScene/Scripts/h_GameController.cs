@@ -35,12 +35,17 @@ public class h_GameController : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "HomeScene" && cloud != null)
         {
             cloud.color = new Color(red, green, blue, alfa);
-            if(alfa >= 0f)
+            if(alfa > 0f)
+            {
                 alfa -= 1f * Time.deltaTime;
+                cloud.transform.Translate(1, 0, 0);
+            }
+                
 
-            if (alfa < 0f)
+            if (alfa <= 0f)
             {
                 alfa = 0f;
+                cloud.enabled = false;
             }
         }
     }
