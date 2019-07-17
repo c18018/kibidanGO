@@ -11,6 +11,7 @@ TagManager:
   - Master
   - Relay
   - Dango
+  - Mochi
   layers:
   - Default
   - TransparentFX

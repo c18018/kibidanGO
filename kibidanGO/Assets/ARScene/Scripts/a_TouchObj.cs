@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class a_TouchObj : MonoBehaviour
 {
     private h_Master master = null;
-    public GameObject mochi, water, sugar = null;
+    public Image mochi, water, sugar = null;
 
 
     private void Start()
     {
         master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        dangoAsset(mochi, master.mochi);
+        dangoAsset(water, master.water);
+        dangoAsset(sugar, master.sugara);
     }
 
 
@@ -47,21 +50,36 @@ public class a_TouchObj : MonoBehaviour
 
             if (hit.collider.tag == "Mochi")
             {
-                //master.mochi = true;
+                master.mochi = true;
+                dangoAsset(mochi, master.mochi);
             }
 
             if (hit.collider.tag == "Water")
             {
-                //master.water = true;
+                master.water = true;
+                dangoAsset(water, master.water);
             }
 
             if (hit.collider.tag == "Sugar")
             {
                 //master.sugar = true;
+                //dangoAsset(sugar, master.sugar);
             }
 
         }
         
+    }
+
+    void dangoAsset(Image material, bool tf)
+    {
+        if (tf)
+        {
+            material.color = new Color(255, 255, 255, 1);
+        }
+        else
+        {
+            material.color = new Color(0, 0, 0, 1);
+        }
     }
 
 
