@@ -6,8 +6,7 @@ public class d_dogTarget : MonoBehaviour
 {
 
     GameObject appearObj = null;
-    int get_co = 0;
-    public bool Dog = false;
+    public int get_co = 0;
 
     bool dog_display = true; //犬のオブジェクトを表示していいかどうか
 
@@ -32,12 +31,7 @@ public class d_dogTarget : MonoBehaviour
             appearObj.SetActive(true);
             Debug.Log("ok");
         }
-
-        if (get_co >= 3 && !Dog)
-        {
-            Dog = true;
-            Debug.Log(Dog);
-        }
+        
     }
 
     void OnCollisionEnter(Collision other)

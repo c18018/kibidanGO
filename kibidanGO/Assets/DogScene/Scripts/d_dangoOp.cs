@@ -24,6 +24,9 @@ public class d_dangoOp : MonoBehaviour
 
     private Vector3 dangoPos = new Vector3(0, -24, 112);
     GameObject master = null;
+    public GameObject dog_relay = null;
+    public int get_co = 0;
+
 
     private void Start()
     {
@@ -174,6 +177,7 @@ public class d_dangoOp : MonoBehaviour
         {
             dango_co--;
             dango.SetActive(true);
+            get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
         dango_op = true;
     }
