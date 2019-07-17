@@ -25,14 +25,14 @@ public class h_GameController : MonoBehaviour
     void Update()
     {
         Debug.Log(scene_script.test_co);
-        if(getComp)
-            Invoke("CloudMove", 2.0f);
+        Debug.Log(getComp);
+        ImageComponentGet();
     }
 
     void CloudMove()
     {
         
-        if(SceneManager.GetActiveScene().name == "HomeScene")
+        if(SceneManager.GetActiveScene().name == "HomeScene" && cloud != null)
         {
             cloud.color = new Color(red, green, blue, alfa);
             if(alfa >= 0f)
@@ -41,7 +41,6 @@ public class h_GameController : MonoBehaviour
             if (alfa < 0f)
             {
                 alfa = 0f;
-                getComp = false;
             }
         }
     }
@@ -53,7 +52,7 @@ public class h_GameController : MonoBehaviour
             // あとでTagに変更
             if(scene_script.test_co == 1)
             {
-                cloud = GameObject.Find("Cloud01").GetComponent<Image>();
+                cloud = GameObject.Find("Cloud1").GetComponent<Image>();
             }
             else if(scene_script.test_co == 2)
             {
@@ -67,6 +66,8 @@ public class h_GameController : MonoBehaviour
             green = cloud.color.g;
             blue = cloud.color.b;
             alfa = cloud.color.a;
+            getComp = false;
         }
+        CloudMove();
     }
 }
