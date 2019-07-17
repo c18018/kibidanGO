@@ -6,19 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class h_SceneController : MonoBehaviour
 {
+    //h_Master masterScript;
+
     // 動物を探しに行くボタン
     Button friendsButton;
     // ダンゴを作るボタン
     Button dangoButton;
 
-    //[System.NonSerialized] public int walk_co = 0;
-
     // テスト用ボタン
     Button testButton;
+    // 雲を動かす(テスト用)
+    public int test_co = 0;
     
     // Start is called before the first frame update
     void Start()
     {
+        // 動物を持っているかの確認
+        //masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         // あとでTagに替える
         friendsButton = GameObject.Find("FriendsButton").GetComponent<Button>();
         //dangoButton = GameObject.FindGameObjectWithTag("DangoButton").GetComponent<Button>();
@@ -47,7 +51,9 @@ public class h_SceneController : MonoBehaviour
 
     public void OnClickedTestButton()
     {
-        SceneManager.LoadScene("OniScene");
-        //walk_co += 1;
+        //SceneManager.LoadScene("OniScene");
+        test_co += 1;
     }
+
+
 }
