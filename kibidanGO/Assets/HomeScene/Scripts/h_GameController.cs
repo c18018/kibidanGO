@@ -10,7 +10,7 @@ public class h_GameController : MonoBehaviour
 
     static public bool getComp = false;
 
-    Image cloud;
+    [SerializeField] public Image cloud;
     float red, green, blue, alfa;
 
     // Start is called before the first frame update
@@ -25,7 +25,8 @@ public class h_GameController : MonoBehaviour
     void Update()
     {
         Debug.Log(scene_script.test_co);
-        Invoke("ImageComponentGet", 2.0f);
+        if(getComp)
+            Invoke("CloudMove", 2.0f);
     }
 
     void CloudMove()
@@ -40,6 +41,7 @@ public class h_GameController : MonoBehaviour
             if (alfa < 0f)
             {
                 alfa = 0f;
+                getComp = false;
             }
         }
     }
@@ -51,7 +53,7 @@ public class h_GameController : MonoBehaviour
             // あとでTagに変更
             if(scene_script.test_co == 1)
             {
-                cloud = GameObject.Find("Cloud1").GetComponent<Image>();
+                cloud = GameObject.Find("Cloud01").GetComponent<Image>();
             }
             else if(scene_script.test_co == 2)
             {
@@ -65,9 +67,6 @@ public class h_GameController : MonoBehaviour
             green = cloud.color.g;
             blue = cloud.color.b;
             alfa = cloud.color.a;
-
-            CloudMove();
-            getComp = false;
         }
     }
 }
