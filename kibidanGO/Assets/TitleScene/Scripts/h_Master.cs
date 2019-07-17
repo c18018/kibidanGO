@@ -30,6 +30,13 @@ public class h_Master : MonoBehaviour
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "DogScene") DogStatus();
+
+        if(SceneManager.GetActiveScene().name == "ARCamera")
+        {
+            //findObj = true;
+            Debug.Log("ARCamera dango_co:" + dango_co);
+            Debug.Log("ARCamera dog_co:" + dog_co);
+        }
     }
 
     public void DogStatus()
@@ -38,16 +45,19 @@ public class h_Master : MonoBehaviour
         dango_co = relayObj.GetComponent<d_dangoOp>().DangoCount();
         dog_co = relayObj.GetComponent<d_dangoOp>().get_co;
         if (dog_co >= 3)
+        {
             Dog = true;
+            relayObj.GetComponent<d_dangoOp>().DogEnd();
+        }
+
+        Debug.Log("dango_co:" + dango_co);
+        Debug.Log("dog_co:" + dog_co);
     }
 
     void ObjectGet()
     {
-        if (findObj)
-        {
-            relayObj = GameObject.FindGameObjectWithTag("Relay");
-            findObj = false;
-            Debug.Log(relayObj);
-        }
+        relayObj = GameObject.FindGameObjectWithTag("Relay");
+        findObj = false;
+        Debug.Log(relayObj);
     }
 }
