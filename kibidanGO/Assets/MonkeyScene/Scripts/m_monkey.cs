@@ -11,12 +11,13 @@ public class m_monkey : MonoBehaviour
     private bool Monkey = false;// さるを見つけたかどうか
 
     public GameObject SceneController = null;
-    
+    AudioSource monkey_voice;
 
     void Start()
     {
         monkeyPos = GameObject.FindGameObjectsWithTag("MonkeyPos");
         transform.position = monkeyPos[Random.Range(0, monkeyPos.Length)].transform.position;
+        monkey_voice = GetComponent<AudioSource>();
     }
     
     void Update()
@@ -34,6 +35,7 @@ public class m_monkey : MonoBehaviour
     //さるの隠れ場所を変更
     private void hidePos()
     {
+        VoiceRing();
         transform.position = monkeyPos[Random.Range(0, monkeyPos.Length)].transform.position;
         timer = 0.0f;
     }
@@ -54,5 +56,10 @@ public class m_monkey : MonoBehaviour
             }
         }
 
+    }
+
+    void VoiceRing()
+    {
+        monkey_voice.Play();
     }
 }
