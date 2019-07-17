@@ -16,6 +16,7 @@ public class h_Master : MonoBehaviour
     [System.NonSerialized] public bool Pheasant = false;
 
     GameObject relayObj;
+    bool findObj = true;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,11 @@ public class h_Master : MonoBehaviour
 
     void ObjectGet()
     {
-        relayObj = GameObject.FindGameObjectWithTag("Relay");
+        if (findObj)
+        {
+            relayObj = GameObject.FindGameObjectWithTag("Relay");
+            findObj = false;
+            Debug.Log(relayObj);
+        }
     }
 }
