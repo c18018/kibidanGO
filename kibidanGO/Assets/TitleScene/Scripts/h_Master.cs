@@ -7,16 +7,15 @@ public class h_Master : MonoBehaviour
 {
     [System.NonSerialized] public int dango_co = 10;
 
-    [System.NonSerialized] public int water_co = 0;
-    [System.NonSerialized] public int mochi_co = 0;
-    [System.NonSerialized] public int sugar_co = 0;
+    [System.NonSerialized] public bool water = false;
+    [System.NonSerialized] public bool mochi = false;
+    [System.NonSerialized] public bool sugara = false;
 
     [System.NonSerialized] public bool Dog = false;
     [System.NonSerialized] public bool Monkey = false;
     [System.NonSerialized] public bool Pheasant = false;
 
     GameObject relayObj;
-    bool findObj = true;
 
     int dog_co = 0;
 
@@ -29,14 +28,7 @@ public class h_Master : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "DogScene") DogStatus();
 
-        if(SceneManager.GetActiveScene().name == "ARCamera")
-        {
-            //findObj = true;
-            Debug.Log("ARCamera dango_co:" + dango_co);
-            Debug.Log("ARCamera dog_co:" + dog_co);
-        }
     }
 
     public void DogStatus()
@@ -54,10 +46,19 @@ public class h_Master : MonoBehaviour
         Debug.Log("dog_co:" + dog_co);
     }
 
+    public void MonkeyStatus()
+    {
+
+    }
+
+    public void PheasantStatus()
+    {
+
+    }
+
     void ObjectGet()
     {
         relayObj = GameObject.FindGameObjectWithTag("Relay");
-        findObj = false;
         Debug.Log(relayObj);
     }
 }
