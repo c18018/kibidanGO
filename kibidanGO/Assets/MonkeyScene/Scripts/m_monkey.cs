@@ -9,6 +9,8 @@ public class m_monkey : MonoBehaviour
 
     private GameObject[] monkeyPos;// さるが移動する場所
     private bool Monkey = false;// さるを見つけたかどうか
+
+    public GameObject SceneController = null;
     
 
     void Start()
@@ -48,9 +50,9 @@ public class m_monkey : MonoBehaviour
             if (hit.collider.tag == "Monkey")
             {
                 Monkey = true;
+                SceneController.GetComponent<m_SceneController>().Monkey();
             }
         }
 
-        Debug.Log(Monkey);
     }
 }
