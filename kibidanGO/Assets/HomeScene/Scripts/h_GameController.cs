@@ -10,14 +10,14 @@ public class h_GameController : MonoBehaviour
 
     static public bool getComp = false;
 
-    [SerializeField] public Image cloud;
+    Image cloud;
     float red, green, blue, alfa;
 
     // Start is called before the first frame update
     void Start()
     {
         scene_script = gameObject.GetComponentInChildren<h_SceneController>();
-        // あとで確認
+        // trueにできるかあとで確認
         //getComp = true;
     }
 
@@ -40,7 +40,6 @@ public class h_GameController : MonoBehaviour
                 alfa -= 1f * Time.deltaTime;
                 cloud.transform.Translate(1, 0, 0);
             }
-                
 
             if (alfa <= 0f)
             {
@@ -54,6 +53,7 @@ public class h_GameController : MonoBehaviour
     {
         if (getComp)
         {
+            // test_co を h_Master の動物取得に変更
             // あとでTagに変更
             if(scene_script.test_co == 1)
             {
