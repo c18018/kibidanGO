@@ -47,7 +47,7 @@ public class MixController : MonoBehaviour
             if(counter >= counterMax)
             {
                 Debug.Log("完成！");
-                SceneManager.LoadScene("Finish");
+                gameObject.SetActive(false);
             }
         }
     }
