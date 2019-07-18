@@ -13,11 +13,8 @@ public class h_SceneController : MonoBehaviour
     // ダンゴを作るボタン
     Button dangoButton;
 
-    // テスト用ボタン
-    //Button testButton;
-    // 雲を動かす(テスト用)
-    //public int test_co = 0;
-    
+    Text dangoCo_text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +22,9 @@ public class h_SceneController : MonoBehaviour
         // あとでTagに替える
         friendsButton = GameObject.Find("FriendsButton").GetComponent<Button>();
         dangoButton = GameObject.Find("DangoButton").GetComponent<Button>();
-
-        // テスト用
-        //testButton = GameObject.FindGameObjectWithTag("Player").GetComponent<Button>();
+        // あとでTag替え
+        dangoCo_text = GameObject.Find("DangoCount").GetComponent<Text>();
+        DangoTextDisplay();
     }
 
     // Update is called once per frame
@@ -36,32 +33,20 @@ public class h_SceneController : MonoBehaviour
 
     }
 
+    // 仲間を探すボタン
     public void OnClickedFriendsButton()
     {
-        ChangeARCameraScene();
+        SceneManager.LoadScene("ARCamera");
     }
 
+    // ダンゴボタン
     public void OnClickedDangoButton()
     {
-
+        SceneManager.LoadScene("KibiScene");
     }
 
-    // ARCameraシーンに遷移する
-    void ChangeARCameraScene()
+    void DangoTextDisplay()
     {
-        SceneManager.LoadScene("ARCamera");
-        //walk_co += 1; 
+        dangoCo_text.text = System.Convert.ToString(masterScript.dango_co);
     }
-
-    /*public void OnClickedTestButton()
-    {
-        //SceneManager.LoadScene("OniScene");
-        // テスト用
-        h_GameController.getComp = true;
-        // テスト用
-        h_ImageController.getComp = true;
-        test_co += 1;
-    }*/
-
-
 }
