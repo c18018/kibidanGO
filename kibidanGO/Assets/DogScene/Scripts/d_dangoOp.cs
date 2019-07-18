@@ -16,6 +16,7 @@ public class d_dangoOp : MonoBehaviour
     private float intervalZ = 0.0f;
     int dango_co = 0;
 
+    AudioSource button;
 
     public Text dangoText = null;
 
@@ -40,6 +41,7 @@ public class d_dangoOp : MonoBehaviour
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
+        button = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -48,7 +50,7 @@ public class d_dangoOp : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
 
         //if (Input.touchCount > 0) TapInput();
-        
+
     }
 
 
@@ -184,9 +186,10 @@ public class d_dangoOp : MonoBehaviour
         {
             dango_co--;
             dangoText.text = dango_co.ToString();
+            dango.SetActive(true);
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
-        if (dango_co > 1) dango.SetActive(true);
+        //if (master.GetComponent<h_Master>().dog_count >= 3) master.GetComponent<h_Master>().DogStatus(); 
         dango_op = true;
     }
     
@@ -207,6 +210,7 @@ public class d_dangoOp : MonoBehaviour
     {
         dango_op = false;
         master.GetComponent<h_Master>().DogStatus();
+        button.Play();
         Invoke("sceneRe", 0.5f);
     }
 
