@@ -57,8 +57,9 @@ public class h_SceneController : MonoBehaviour
     public void OnClickedTestButton()
     {
         //SceneManager.LoadScene("OniScene");
-        // 多分後で消すはず
+        // テスト用
         h_GameController.getComp = true;
+        // テスト用
         h_ImageController.getComp = true;
         test_co += 1;
     }
