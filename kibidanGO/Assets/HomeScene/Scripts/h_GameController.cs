@@ -14,11 +14,16 @@ public class h_GameController : MonoBehaviour
     Image cloud;
     float red, green, blue, alfa;
 
+    [SerializeField] public AudioClip cloud_sound;
+    AudioSource audioSource;
+    bool oneshot = false;
+
     // Start is called before the first frame update
     void Start()
     {
         //scene_script = gameObject.GetComponentInChildren<h_SceneController>();
         masterSc = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         // trueにできるかあとで確認
         if(masterSc.Dog || masterSc.Monkey || masterSc.Pheasant)
             getComp = true;
@@ -61,14 +66,17 @@ public class h_GameController : MonoBehaviour
             if(masterSc.Dog)
             {
                 cloud = GameObject.Find("Cloud1").GetComponent<Image>();
+                oneshot = true;
             }
             else if(masterSc.Monkey)
             {
                 cloud = GameObject.Find("Cloud2").GetComponent<Image>();
+                oneshot = true;
             }
             else if(masterSc.Pheasant)
             {
                 cloud = GameObject.Find("Cloud3").GetComponent<Image>();
+                oneshot = true;
             }
             red = cloud.color.r;
             green = cloud.color.g;
@@ -76,6 +84,10 @@ public class h_GameController : MonoBehaviour
             alfa = cloud.color.a;
             getComp = false;
         }
+        if (oneshot)
+            audioSource.PlayOneShot(cloud_sound);
+
+        oneshot = false;
         CloudMove();
     }
 }
