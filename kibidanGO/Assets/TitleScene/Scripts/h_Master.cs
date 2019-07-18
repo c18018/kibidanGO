@@ -48,7 +48,7 @@ public class h_Master : MonoBehaviour
 
     public void MonkeyStatus()
     {
-
+        Monkey = true;
     }
 
     public void PheasantStatus()
