@@ -24,7 +24,7 @@ public class m_SceneController : MonoBehaviour
 
     public void returnButton()
     {
-        //master.GetComponent<h_Master>().DogStatus();
+        master.GetComponent<h_Master>().MonkeyStatus();
         Invoke("sceneRe", 0.5f);
     }
 
