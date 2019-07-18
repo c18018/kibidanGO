@@ -17,7 +17,7 @@ public class h_Master : MonoBehaviour
 
     GameObject relayObj;
 
-    int dog_co = 0;
+    [System.NonSerialized] public int dog_co = 0;
 
     // Start is called before the first frame update
     void Start()

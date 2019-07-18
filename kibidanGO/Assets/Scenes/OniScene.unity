@@ -1057,7 +1057,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1072612515
 MonoBehaviour:
@@ -1209,7 +1209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.63
+      value: 0.62999994
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1221,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1253,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalScale.x
-      value: 45
+      value: 45.00007
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalScale.y
@@ -1261,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850443409801414, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
       propertyPath: m_LocalScale.z
-      value: 45
+      value: 45.00007
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04c741143a35bd64a97bf6be955682ea, type: 3}
@@ -1384,7 +1384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 185.4, y: -140}
+  m_AnchoredPosition: {x: 185.40002, y: -140}
   m_SizeDelta: {x: 300, y: 775}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504718291
@@ -1592,7 +1592,7 @@ RectTransform:
   - {fileID: 421289761}
   - {fileID: 141632970}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
