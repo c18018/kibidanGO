@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dog
+  - Oni
+  - MonkeyPos
+  - Monkey
+  - Master
+  - Relay
+  - Dango
+  - Mochi
+  - Water
+  - Sugar
+  - Pheasant
+  - Cloud1
+  - Cloud2
+  - Cloud3
   layers:
   - Default
   - TransparentFX
