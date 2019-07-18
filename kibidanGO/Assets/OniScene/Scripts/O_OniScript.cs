@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class O_OniScript : MonoBehaviour
+public class o_OniScript : MonoBehaviour
 {
-    O_PlayerScript m_playerScript;
+    o_PlayerScript m_playerScript;
 
     private int m_oniHP = 200;
     public int OniHP
@@ -23,7 +23,7 @@ public class O_OniScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_playerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<O_PlayerScript>();
+        m_playerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<o_PlayerScript>();
        
         StartCoroutine("TurnController");
     }
