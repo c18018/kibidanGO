@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class d_dangoOp : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class d_dangoOp : MonoBehaviour
     private float intervalZ = 0.0f;
     int dango_co = 0;
 
-    
 
+    public Text dangoText = null;
 
     private Vector3[] trajectory = new Vector3[2];//２フレーム分の位置の配列
 
@@ -35,6 +36,7 @@ public class d_dangoOp : MonoBehaviour
     private void Start()
     {
         dango_op = true;
+        dangoText.text = dango_co.ToString();
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
@@ -181,18 +183,13 @@ public class d_dangoOp : MonoBehaviour
         if (dango_co > 0)
         {
             dango_co--;
-            dango.SetActive(true);
+            dangoText.text = dango_co.ToString();
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
+        if (dango_co > 1) dango.SetActive(true);
         dango_op = true;
     }
-
-
-    private void OnGUI()
-    {
-        GUI.skin.label.fontSize = 50;
-        GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)dango_co));
-    }
+    
 
     public int DangoCount()
     {
