@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class O_PlayerScript : MonoBehaviour
+public class o_PlayerScript : MonoBehaviour
 {
-    O_OniScript m_oniScript;
-    O_GameControllerScript m_gameConScript;
+    o_OniScript m_oniScript;
+    o_GameControllerScript m_gameConScript;
 
     bool m_buttonSelect = false;
     [System.NonSerialized] public bool onDogButton = false;
@@ -26,9 +26,10 @@ public class O_PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_oniScript = GameObject.FindGameObjectWithTag("Oni").GetComponent<O_OniScript>();
-        m_gameConScript = gameObject.GetComponentInChildren<O_GameControllerScript>();
+        m_oniScript = GameObject.FindGameObjectWithTag("Oni").GetComponent<o_OniScript>();
+        m_gameConScript = gameObject.GetComponentInChildren<o_GameControllerScript>();
 
+        // Tagに替えろ！！
         dogButton = GameObject.Find("DogButton").GetComponent<Button>();
         monkeyButton = GameObject.Find("MonkeyButton").GetComponent<Button>();
         pheasantButton = GameObject.Find("PheasantButton").GetComponent<Button>();
