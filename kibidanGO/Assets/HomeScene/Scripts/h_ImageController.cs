@@ -11,13 +11,16 @@ public class h_ImageController : MonoBehaviour
     float red, green, blue, alfa;
     h_Master masterScript;
 
-    h_SceneController sceneSc;
+    // テスト用
+    //h_SceneController sceneSc;
     
     // Start is called before the first frame update
     void Start()
     {
-        //masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
-        sceneSc = gameObject.GetComponentInChildren<h_SceneController>();
+        masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        // テスト用
+        //sceneSc = gameObject.GetComponentInChildren<h_SceneController>();
+        // Startが毎回動くか確認する！
         //getComp = true;
     }
 
@@ -44,16 +47,17 @@ public class h_ImageController : MonoBehaviour
     {
         if (getComp)
         {
-            if (sceneSc.test_co == 1)
+            if (masterScript.Dog == true)
             {
-                animal = GameObject.Find("Dog").GetComponent<Image>();
+                animal = GameObject.FindGameObjectWithTag("Dog").GetComponent<Image>();
             }
-            else if (sceneSc.test_co == 2)
+            else if (masterScript.Monkey == true)
             {
-                animal = GameObject.Find("Monkey").GetComponent<Image>();
+                animal = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Image>();
             }
-            else if (sceneSc.test_co == 3)
+            else if (masterScript.Pheasant == true)
             {
+                // Tagをかえる!!!
                 animal = GameObject.Find("Pheasant").GetComponent<Image>();
             }
             red = animal.color.r;
