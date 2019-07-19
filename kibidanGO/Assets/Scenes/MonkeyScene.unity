@@ -253,6 +253,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 130945217}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &136686508
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'yukaMaterial
+
+    11968'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: b256c77094b0410eb4938ec937fbdfeb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &196704627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1510,34 +1538,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 860455170}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &882344551
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'Dog0Material
-
-    13090'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a32ae6cbc48542668751ae750e77a443, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &884511282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2521,6 +2521,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1299529487
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299529483}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.02
+  m_Height: 0.14
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.07, z: 0.01}
 --- !u!1 &1341762102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4014,7 +4028,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787019209}
-  m_Mesh: {fileID: 2018218769}
+  m_Mesh: {fileID: 1941288906}
 --- !u!23 &1787019211
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4032,7 +4046,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 882344551}
+  - {fileID: 136686508}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4088,7 +4102,7 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: Dog0
+  mTrackableName: yuka
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/kibidanGO.xml
@@ -4708,90 +4722,13 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1915506581}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1978232683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1978232684}
-  m_Layer: 0
-  m_Name: Stage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1978232684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978232683}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 356589177}
-  - {fileID: 1915506582}
-  - {fileID: 1763605583}
-  - {fileID: 2026923405}
-  - {fileID: 1596473698}
-  - {fileID: 991789094}
-  - {fileID: 500037177}
-  - {fileID: 1811546165}
-  - {fileID: 1639592530}
-  - {fileID: 196704628}
-  - {fileID: 1471735618}
-  - {fileID: 1859259580}
-  - {fileID: 1760642545}
-  - {fileID: 1826387582}
-  - {fileID: 1482920964}
-  - {fileID: 1209816480}
-  - {fileID: 1379393801}
-  - {fileID: 995059380}
-  - {fileID: 1582807620}
-  - {fileID: 1033920429}
-  - {fileID: 884511283}
-  - {fileID: 1270610359}
-  - {fileID: 1678385863}
-  - {fileID: 471463858}
-  - {fileID: 624245671}
-  - {fileID: 1254605795}
-  - {fileID: 273472723}
-  - {fileID: 410202048}
-  - {fileID: 1778098682}
-  - {fileID: 1145375509}
-  - {fileID: 1893484138}
-  - {fileID: 1621345678}
-  - {fileID: 1141249807}
-  - {fileID: 1911014184}
-  - {fileID: 234707651}
-  - {fileID: 130945218}
-  - {fileID: 1682130700}
-  - {fileID: 633603927}
-  - {fileID: 1154927770}
-  - {fileID: 905445348}
-  - {fileID: 860455171}
-  - {fileID: 299004538}
-  - {fileID: 2050198387}
-  - {fileID: 2094171494}
-  - {fileID: 554610619}
-  - {fileID: 492021959}
-  - {fileID: 1756884369}
-  m_Father: {fileID: 129960128}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &2018218769
+--- !u!43 &1941288906
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImageTargetMesh13080
+  m_Name: ImageTargetMesh11958
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4945,6 +4882,83 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1978232683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978232684}
+  m_Layer: 0
+  m_Name: Stage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1978232684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978232683}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 356589177}
+  - {fileID: 1915506582}
+  - {fileID: 1763605583}
+  - {fileID: 2026923405}
+  - {fileID: 1596473698}
+  - {fileID: 991789094}
+  - {fileID: 500037177}
+  - {fileID: 1811546165}
+  - {fileID: 1639592530}
+  - {fileID: 196704628}
+  - {fileID: 1471735618}
+  - {fileID: 1859259580}
+  - {fileID: 1760642545}
+  - {fileID: 1826387582}
+  - {fileID: 1482920964}
+  - {fileID: 1209816480}
+  - {fileID: 1379393801}
+  - {fileID: 995059380}
+  - {fileID: 1582807620}
+  - {fileID: 1033920429}
+  - {fileID: 884511283}
+  - {fileID: 1270610359}
+  - {fileID: 1678385863}
+  - {fileID: 471463858}
+  - {fileID: 624245671}
+  - {fileID: 1254605795}
+  - {fileID: 273472723}
+  - {fileID: 410202048}
+  - {fileID: 1778098682}
+  - {fileID: 1145375509}
+  - {fileID: 1893484138}
+  - {fileID: 1621345678}
+  - {fileID: 1141249807}
+  - {fileID: 1911014184}
+  - {fileID: 234707651}
+  - {fileID: 130945218}
+  - {fileID: 1682130700}
+  - {fileID: 633603927}
+  - {fileID: 1154927770}
+  - {fileID: 905445348}
+  - {fileID: 860455171}
+  - {fileID: 299004538}
+  - {fileID: 2050198387}
+  - {fileID: 2094171494}
+  - {fileID: 554610619}
+  - {fileID: 492021959}
+  - {fileID: 1756884369}
+  m_Father: {fileID: 129960128}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2026923404
 PrefabInstance:
   m_ObjectHideFlags: 0
