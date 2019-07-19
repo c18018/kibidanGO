@@ -27,7 +27,7 @@ public class d_dangoOp : MonoBehaviour
     GameObject targetObj = null;//標的になる物体
     private Vector3 target;//標的になる物体の位置
 
-    private bool dango_op = true;//団子の操作をしていいかどうか
+    private bool dango_op = false;//団子の操作をしていいかどうか
 
     private Vector3 dangoPos = new Vector3(0, -24, 112);
     GameObject master = null;
@@ -45,6 +45,7 @@ public class d_dangoOp : MonoBehaviour
         get_co = master.GetComponent<h_Master>().dog_co;
         dangoText.text = dango_co.ToString();
         audio = GetComponent<AudioSource>();
+        Invoke("DangoPos0", 0.1f);
     }
 
     void Update()
@@ -176,6 +177,7 @@ public class d_dangoOp : MonoBehaviour
             yield return null;
         }
         
+
         dango.SetActive(false);
         Invoke("DangoPos0", 0.5f);
     }
@@ -197,6 +199,7 @@ public class d_dangoOp : MonoBehaviour
             master.GetComponent<h_Master>().DogStatus();
             DogEnd();
         }
+
         dango_op = true;
     }
     
