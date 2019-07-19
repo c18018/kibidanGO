@@ -37,10 +37,10 @@ public class d_dangoOp : MonoBehaviour
     private void Start()
     {
         dango_op = true;
-        dangoText.text = dango_co.ToString();
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
+        dangoText.text = dango_co.ToString();
         button = GetComponent<AudioSource>();
     }
 
