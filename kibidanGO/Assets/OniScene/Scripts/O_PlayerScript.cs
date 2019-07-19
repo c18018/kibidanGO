@@ -13,7 +13,7 @@ public class o_PlayerScript : MonoBehaviour
     [System.NonSerialized] public bool onMonkeyButton = false;
     [System.NonSerialized] public bool onPheasantButton = false;
 
-    [SerializeField] public Button dogButton;
+    [System.NonSerialized] public Button dogButton;
     [System.NonSerialized] public Button monkeyButton;
     [System.NonSerialized] public Button pheasantButton;
 
@@ -30,9 +30,9 @@ public class o_PlayerScript : MonoBehaviour
         m_gameConScript = gameObject.GetComponentInChildren<o_GameControllerScript>();
 
         // Tagに替えろ！！
-        dogButton = GameObject.Find("DogButton").GetComponent<Button>();
-        monkeyButton = GameObject.Find("MonkeyButton").GetComponent<Button>();
-        pheasantButton = GameObject.Find("PheasantButton").GetComponent<Button>();
+        dogButton = GameObject.FindGameObjectWithTag("Dog").GetComponent<Button>();
+        monkeyButton = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Button>();
+        pheasantButton = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Button>();
 
         dogButton.interactable = false;
         monkeyButton.interactable = false;
