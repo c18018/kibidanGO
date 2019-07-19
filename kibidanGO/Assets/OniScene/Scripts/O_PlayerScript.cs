@@ -13,7 +13,7 @@ public class o_PlayerScript : MonoBehaviour
     [System.NonSerialized] public bool onMonkeyButton = false;
     [System.NonSerialized] public bool onPheasantButton = false;
 
-    [System.NonSerialized] public Button dogButton;
+    [SerializeField] public Button dogButton;
     [System.NonSerialized] public Button monkeyButton;
     [System.NonSerialized] public Button pheasantButton;
 

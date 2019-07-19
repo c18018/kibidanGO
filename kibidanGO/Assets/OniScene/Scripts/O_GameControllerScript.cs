@@ -68,10 +68,10 @@ public class o_GameControllerScript : MonoBehaviour
         }
     }
    
-    private void OnGUI()
+    /*private void OnGUI()
     {
         GUI.skin.label.fontSize = 50;
         GUI.Label(new Rect(1700, 100, 500, 300), System.Convert.ToString(oniSc.OniHP) + " / " + oniHp);
         GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)time));
-    }
+    }*/
 }
