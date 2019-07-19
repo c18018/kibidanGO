@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ZairyouController : MonoBehaviour
 {
-    float speed = 2.0f;
+    float speed = 4.0f;
     float time = 0;
 
     public GameObject target;
 
-
+    void Start()
+    {
+        Invoke("False",3);
+    }
 
     void Update()
 
@@ -20,6 +23,11 @@ public class ZairyouController : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
 
+    }
+
+    void False()
+    {
+        Destroy(gameObject);
     }
 
 }
