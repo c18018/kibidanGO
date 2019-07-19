@@ -506,6 +506,8 @@ MonoBehaviour:
   mochi: {fileID: 2144262239}
   water: {fileID: 719170209}
   sugar: {fileID: 311801542}
+  button: {fileID: 8300000, guid: 4f72761bcbab8bb49840d6530a61c702, type: 3}
+  mateGet: {fileID: 8300000, guid: 4c60edfcbc526444abeb0e41d9cd8b08, type: 3}
 --- !u!4 &604029752
 Transform:
   m_ObjectHideFlags: 0
@@ -530,7 +532,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4f72761bcbab8bb49840d6530a61c702, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
