@@ -909,6 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4eb8728df4c944b14e8ab6750ac82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button_sound: {fileID: 8300000, guid: 4f72761bcbab8bb49840d6530a61c702, type: 3}
 --- !u!114 &503720202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fb0cd6b8130654b834b4523d4cb998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloud_sound: {fileID: 0}
+  cloud_sound: {fileID: 8300000, guid: 7f26a4e157831da469be7c4becf95942, type: 3}
 --- !u!4 &503720203
 Transform:
   m_ObjectHideFlags: 0

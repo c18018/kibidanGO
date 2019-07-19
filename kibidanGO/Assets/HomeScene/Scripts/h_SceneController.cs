@@ -12,8 +12,11 @@ public class h_SceneController : MonoBehaviour
     Button friendsButton;
     // ダンゴを作るボタン
     Button dangoButton;
-
+    // ダンゴの数を表示するテキスト
     Text dangoCo_text;
+
+    [SerializeField] public AudioClip button_sound;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,8 @@ public class h_SceneController : MonoBehaviour
         dangoButton = GameObject.Find("DangoButton").GetComponent<Button>();
         // あとでTag替え
         dangoCo_text = GameObject.Find("DangoCount").GetComponent<Text>();
+        audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+        // ダンゴの数を表示
         DangoTextDisplay();
     }
 
@@ -36,12 +41,14 @@ public class h_SceneController : MonoBehaviour
     // 仲間を探すボタン
     public void OnClickedFriendsButton()
     {
+        audioSource.PlayOneShot(button_sound);
         SceneManager.LoadScene("ARCamera");
     }
 
     // ダンゴボタン
     public void OnClickedDangoButton()
     {
+        audioSource.PlayOneShot(button_sound);
         SceneManager.LoadScene("KibiScene");
     }
 
