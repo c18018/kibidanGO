@@ -22,7 +22,6 @@ public class d_dog : MonoBehaviour
         {
             interval = Random.Range(1, 7);
             VoiceRing();
-            Debug.Log(interval);
             timer = 0.0f;
         }
     }

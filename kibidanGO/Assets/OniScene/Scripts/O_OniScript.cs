@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class O_OniScript : MonoBehaviour
+public class o_OniScript : MonoBehaviour
 {
-    O_PlayerScript m_playerScript;
+    o_PlayerScript m_playerScript;
 
+    // 鬼のHP
     private int m_oniHP = 200;
     public int OniHP
     {
@@ -14,16 +15,21 @@ public class O_OniScript : MonoBehaviour
         set { this.m_oniHP = value; }
     }
 
+    // 鬼の攻撃パターン
     private int m_attackRandom = 0;
     
+    // 鬼がどこを攻撃しているか
     [System.NonSerialized] public bool m_oniupper = false;
     [System.NonSerialized] public bool m_onimiddle = false;
     [System.NonSerialized] public bool m_onilower = false;
-    
+
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        m_playerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<O_PlayerScript>();
+        m_playerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<o_PlayerScript>();
+        animator = GetComponent<Animator>();
        
         StartCoroutine("TurnController");
     }
@@ -40,17 +46,20 @@ public class O_OniScript : MonoBehaviour
         {
             yield return new WaitForSeconds(2.0f);
             m_attackRandom = Random.Range(1, 4);
-
+            Debug.Log("Random" + m_attackRandom);
             if(m_attackRandom == 1)
             {
+                animator.SetTrigger("upAttack");
                 m_oniupper = true;
             }
             else if(m_attackRandom == 2)
             {
+                animator.SetTrigger("mediumAttack");
                 m_onimiddle = true;
             }
             else if(m_attackRandom == 3)
             {
+                animator.SetTrigger("underAttack");
                 m_onilower = true;
             }
 

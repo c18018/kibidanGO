@@ -6,25 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class h_GameController : MonoBehaviour
 {
-    h_SceneController scene_script;
+    //h_SceneController scene_script;
+    h_Master masterSc;
 
-    static public bool getComp = false;
+    bool getComp = false;
 
     Image cloud;
     float red, green, blue, alfa;
 
+    [SerializeField] public AudioClip cloud_sound;
+    AudioSource audioSource;
+    bool oneshot = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        scene_script = gameObject.GetComponentInChildren<h_SceneController>();
+        //scene_script = gameObject.GetComponentInChildren<h_SceneController>();
+        masterSc = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         // trueにできるかあとで確認
-        //getComp = true;
+        if(masterSc.Dog || masterSc.Monkey || masterSc.Pheasant)
+            getComp = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(scene_script.test_co);
+        //Debug.Log(scene_script.test_co);
         Debug.Log(getComp);
         ImageComponentGet();
     }
@@ -32,7 +40,7 @@ public class h_GameController : MonoBehaviour
     void CloudMove()
     {
         
-        if(SceneManager.GetActiveScene().name == "HomeScene" && cloud != null)
+        if(cloud != null)
         {
             cloud.color = new Color(red, green, blue, alfa);
             if(alfa > 0f)
@@ -55,17 +63,20 @@ public class h_GameController : MonoBehaviour
         {
             // test_co を h_Master の動物取得に変更
             // あとでTagに変更
-            if(scene_script.test_co == 1)
+            if(masterSc.Dog)
             {
                 cloud = GameObject.Find("Cloud1").GetComponent<Image>();
+                oneshot = true;
             }
-            else if(scene_script.test_co == 2)
+            else if(masterSc.Monkey)
             {
                 cloud = GameObject.Find("Cloud2").GetComponent<Image>();
+                oneshot = true;
             }
-            else if(scene_script.test_co == 3)
+            else if(masterSc.Pheasant)
             {
                 cloud = GameObject.Find("Cloud3").GetComponent<Image>();
+                oneshot = true;
             }
             red = cloud.color.r;
             green = cloud.color.g;
@@ -73,6 +84,10 @@ public class h_GameController : MonoBehaviour
             alfa = cloud.color.a;
             getComp = false;
         }
+        if (oneshot)
+            audioSource.PlayOneShot(cloud_sound);
+
+        oneshot = false;
         CloudMove();
     }
 }

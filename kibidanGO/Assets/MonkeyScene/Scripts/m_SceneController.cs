@@ -7,10 +7,12 @@ public class m_SceneController : MonoBehaviour
 {
     private GameObject master = null;
     public GameObject end_display = null;
+    AudioSource button;
 
     private void Start()
     {
         master = GameObject.FindGameObjectWithTag("Master");
+        button = GetComponent<AudioSource>();
     }
 
 
@@ -24,6 +26,7 @@ public class m_SceneController : MonoBehaviour
 
     public void returnButton()
     {
+        button.Play();
         master.GetComponent<h_Master>().MonkeyStatus();
         Invoke("sceneRe", 0.5f);
     }
