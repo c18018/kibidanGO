@@ -24,9 +24,14 @@ public class t_ButtonController : MonoBehaviour
         
     }
 
-    public void OnClickStartButton()
+    public void OnClickedStartButton()
     {
         audioSource.PlayOneShot(button_sound);
+        Invoke("ChangeHome", 0.5f);
+    }
+
+    void ChangeHome()
+    {
         SceneManager.LoadScene("HomeScene");
     }
 }

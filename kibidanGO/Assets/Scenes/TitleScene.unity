@@ -255,6 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a03eb686d79f044a2357be407066b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dog: 0
+  Monkey: 0
+  Pheasant: 0
 --- !u!4 &650680061
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +426,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 121976159}
-        m_MethodName: OnClickStartButton
+        m_MethodName: OnClickedStartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
