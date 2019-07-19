@@ -50,6 +50,7 @@ public class a_TouchObj : MonoBehaviour
             waterTf = !master.water;
             sugarTf = !master.sugar;
 
+
             if(hit.collider.tag == "Dog" && dogScene)
             {
                 SceneManager.LoadScene("DogScene");
