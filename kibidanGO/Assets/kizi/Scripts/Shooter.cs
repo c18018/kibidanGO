@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Shooter : MonoBehaviour
 {
@@ -9,11 +12,13 @@ public class Shooter : MonoBehaviour
     public float shotSpeed;
     public float shotTotque;
     public int shotCount;
+    h_Master Master;
 
     // Use this for initialization
     void Start()
     {
-
+        Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        shotCount = Master.dango_co;
     }
 
     // Update is called once per frame
@@ -44,5 +49,11 @@ public class Shooter : MonoBehaviour
 
 
         }
+    }
+    public void Return()
+    {
+        
+        SceneManager.LoadScene("ARCamera");
+        Master.dango_co = shotCount;
     }
 }
