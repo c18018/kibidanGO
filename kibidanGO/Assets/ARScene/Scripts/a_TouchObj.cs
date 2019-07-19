@@ -16,6 +16,7 @@ public class a_TouchObj : MonoBehaviour
     bool dogScene = true;
     bool monkeyScene = true;
     bool kijiScene = true;
+    bool mochiTf, waterTf, sugarTf = true;
 
 
     private void Start()
@@ -45,6 +46,9 @@ public class a_TouchObj : MonoBehaviour
             dogScene = !master.Dog;
             monkeyScene = !master.Monkey;
             kijiScene = !master.Pheasant;
+            mochiTf = !master.mochi;
+            waterTf = !master.water;
+            sugarTf = !master.sugar;
 
             if(hit.collider.tag == "Dog" && dogScene)
             {
@@ -61,21 +65,21 @@ public class a_TouchObj : MonoBehaviour
                 SceneManager.LoadScene("kiji");
             }
 
-            if (hit.collider.tag == "Mochi")
+            if (hit.collider.tag == "Mochi" && mochiTf)
             {
                 master.mochi = true;
                 dangoAsset(mochi, master.mochi);
                 audio.PlayOneShot(mateGet);
             }
 
-            if (hit.collider.tag == "Water")
+            if (hit.collider.tag == "Water" && waterTf)
             {
                 master.water = true;
                 dangoAsset(water, master.water);
                 audio.PlayOneShot(mateGet);
             }
 
-            if (hit.collider.tag == "Sugar")
+            if (hit.collider.tag == "Sugar" && sugarTf)
             {
                 master.sugar = true;
                 dangoAsset(sugar, master.sugar);
