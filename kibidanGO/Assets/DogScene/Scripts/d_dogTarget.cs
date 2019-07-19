@@ -33,11 +33,13 @@ public class d_dogTarget : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Dango")
+        if(other.gameObject.tag == "Dango")
         {
             get_co++;
+            Debug.Log("ok");
+            GetComponent<AudioSource>().Play();
         }
     }
 }

@@ -9,7 +9,14 @@ public class a_TouchObj : MonoBehaviour
     private h_Master master = null;
     public Image mochi, water, sugar = null;
 
-    AudioSource button;
+    AudioSource audio;
+    public AudioClip button;
+    public AudioClip mateGet;
+
+    bool dogScene = true;
+    bool monkeyScene = true;
+    bool kijiScene = true;
+    bool mochiTf, waterTf, sugarTf = true;
 
 
     private void Start()
@@ -18,7 +25,7 @@ public class a_TouchObj : MonoBehaviour
         dangoAsset(mochi, master.mochi);
         dangoAsset(water, master.water);
         dangoAsset(sugar, master.sugar);
-        button = GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
     }
 
 
@@ -36,37 +43,47 @@ public class a_TouchObj : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if(hit.collider.tag == "Dog")
+            dogScene = !master.Dog;
+            monkeyScene = !master.Monkey;
+            kijiScene = !master.Pheasant;
+            mochiTf = !master.mochi;
+            waterTf = !master.water;
+            sugarTf = !master.sugar;
+
+            if(hit.collider.tag == "Dog" && dogScene)
             {
                 SceneManager.LoadScene("DogScene");
             }
 
-            if (hit.collider.tag == "Monkey")
+            if (hit.collider.tag == "Monkey" && monkeyScene)
             {
                 SceneManager.LoadScene("MonkeyScene");
             }
 
-            if (hit.collider.tag == "Pheasant")
+            if (hit.collider.tag == "Pheasant" && kijiScene)
             {
                 SceneManager.LoadScene("kiji");
             }
 
-            if (hit.collider.tag == "Mochi")
+            if (hit.collider.tag == "Mochi" && mochiTf)
             {
                 master.mochi = true;
                 dangoAsset(mochi, master.mochi);
+                audio.PlayOneShot(mateGet);
             }
 
-            if (hit.collider.tag == "Water")
+            if (hit.collider.tag == "Water" && waterTf)
             {
                 master.water = true;
                 dangoAsset(water, master.water);
+                audio.PlayOneShot(mateGet);
             }
 
-            if (hit.collider.tag == "Sugar")
+            if (hit.collider.tag == "Sugar" && sugarTf)
             {
                 master.sugar = true;
                 dangoAsset(sugar, master.sugar);
+                audio.PlayOneShot(mateGet);
             }
 
         }
@@ -88,7 +105,7 @@ public class a_TouchObj : MonoBehaviour
 
     public void returnButton()
     {
-        button.Play();
+        audio.PlayOneShot(button);
         Invoke("sceneRe", 0.5f);
     }
 

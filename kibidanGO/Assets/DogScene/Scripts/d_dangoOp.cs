@@ -16,7 +16,9 @@ public class d_dangoOp : MonoBehaviour
     private float intervalZ = 0.0f;
     int dango_co = 0;
 
-    AudioSource button;
+    AudioSource audio;
+    public AudioClip button;
+    public AudioClip get;
 
     public Text dangoText = null;
 
@@ -25,7 +27,7 @@ public class d_dangoOp : MonoBehaviour
     GameObject targetObj = null;//標的になる物体
     private Vector3 target;//標的になる物体の位置
 
-    private bool dango_op = true;//団子の操作をしていいかどうか
+    private bool dango_op = false;//団子の操作をしていいかどうか
 
     private Vector3 dangoPos = new Vector3(0, -24, 112);
     GameObject master = null;
@@ -40,16 +42,18 @@ public class d_dangoOp : MonoBehaviour
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
+        get_co = master.GetComponent<h_Master>().dog_co;
         dangoText.text = dango_co.ToString();
-        button = GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
+        Invoke("DangoPos0", 0.1f);
     }
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && dango_op) Dango_pos();
-        if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
+        //if (Input.GetMouseButton(0) && dango_op) Dango_pos();
+        //if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
 
-        //if (Input.touchCount > 0) TapInput();
+        if (Input.touchCount > 0) TapInput();
 
     }
 
@@ -173,6 +177,7 @@ public class d_dangoOp : MonoBehaviour
             yield return null;
         }
         
+
         dango.SetActive(false);
         Invoke("DangoPos0", 0.5f);
     }
@@ -189,7 +194,12 @@ public class d_dangoOp : MonoBehaviour
             dango.SetActive(true);
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
-        if (master.GetComponent<h_Master>().dog_co >= 3) master.GetComponent<h_Master>().DogStatus(); 
+
+        if (get_co >= 3) {
+            master.GetComponent<h_Master>().DogStatus();
+            DogEnd();
+        }
+
         dango_op = true;
     }
     
@@ -203,6 +213,7 @@ public class d_dangoOp : MonoBehaviour
     public void DogEnd()
     {
         dango_op = false;
+        audio.PlayOneShot(get);
         end_display.SetActive(true);
     }
 
@@ -210,7 +221,7 @@ public class d_dangoOp : MonoBehaviour
     {
         dango_op = false;
         master.GetComponent<h_Master>().DogStatus();
-        button.Play();
+        audio.PlayOneShot(button);
         Invoke("sceneRe", 0.5f);
     }
 

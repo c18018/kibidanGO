@@ -21,13 +21,13 @@ public class m_SceneController : MonoBehaviour
     {
         Debug.Log(true);
         end_display.SetActive(true);
+        master.GetComponent<h_Master>().Monkey = true;
         return true;
     }
 
     public void returnButton()
     {
         button.Play();
-        master.GetComponent<h_Master>().MonkeyStatus();
         Invoke("sceneRe", 0.5f);
     }
 
