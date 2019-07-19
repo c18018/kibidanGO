@@ -189,7 +189,7 @@ public class d_dangoOp : MonoBehaviour
             dango.SetActive(true);
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
-        //if (master.GetComponent<h_Master>().dog_count >= 3) master.GetComponent<h_Master>().DogStatus(); 
+        if (master.GetComponent<h_Master>().dog_co >= 3) master.GetComponent<h_Master>().DogStatus(); 
         dango_op = true;
     }
     
