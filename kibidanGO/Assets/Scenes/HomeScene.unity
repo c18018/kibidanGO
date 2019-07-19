@@ -910,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button_sound: {fileID: 8300000, guid: 4f72761bcbab8bb49840d6530a61c702, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &503720202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animal: {fileID: 0}
-  audioClip:
+  sound:
   - {fileID: 8300000, guid: 1ff22edc440684a4c83a5b805ad23091, type: 3}
   - {fileID: 8300000, guid: 453bc658872f1434796b7b8fe08ccadd, type: 3}
   - {fileID: 8300000, guid: 03719fdd7a7ad0d4e9c69279956e7fd5, type: 3}
