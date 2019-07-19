@@ -29,7 +29,6 @@ public class d_dogTarget : MonoBehaviour
         }else if(!dog_display && !appearObj.activeSelf)
         {
             appearObj.SetActive(true);
-            Debug.Log("ok");
         }
         
     }

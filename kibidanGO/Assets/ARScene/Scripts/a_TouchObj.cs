@@ -9,6 +9,8 @@ public class a_TouchObj : MonoBehaviour
     private h_Master master = null;
     public Image mochi, water, sugar = null;
 
+    AudioSource button;
+
 
     private void Start()
     {
@@ -16,6 +18,7 @@ public class a_TouchObj : MonoBehaviour
         dangoAsset(mochi, master.mochi);
         dangoAsset(water, master.water);
         dangoAsset(sugar, master.sugar);
+        button = GetComponent<AudioSource>();
     }
 
 
@@ -45,7 +48,7 @@ public class a_TouchObj : MonoBehaviour
 
             if (hit.collider.tag == "Pheasant")
             {
-                SceneManager.LoadScene("PheasantScene");
+                SceneManager.LoadScene("kiji");
             }
 
             if (hit.collider.tag == "Mochi")
@@ -62,8 +65,8 @@ public class a_TouchObj : MonoBehaviour
 
             if (hit.collider.tag == "Sugar")
             {
-                //master.sugar = true;
-                //dangoAsset(sugar, master.sugar);
+                master.sugar = true;
+                dangoAsset(sugar, master.sugar);
             }
 
         }
@@ -84,6 +87,12 @@ public class a_TouchObj : MonoBehaviour
 
 
     public void returnButton()
+    {
+        button.Play();
+        Invoke("sceneRe", 0.5f);
+    }
+
+    private void sceneRe()
     {
         SceneManager.LoadScene("HomeScene");
     }

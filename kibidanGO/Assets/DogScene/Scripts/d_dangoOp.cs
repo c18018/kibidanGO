@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class d_dangoOp : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class d_dangoOp : MonoBehaviour
     private float intervalZ = 0.0f;
     int dango_co = 0;
 
-    
+    AudioSource button;
 
+    public Text dangoText = null;
 
     private Vector3[] trajectory = new Vector3[2];//２フレーム分の位置の配列
 
@@ -38,6 +40,8 @@ public class d_dangoOp : MonoBehaviour
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
+        dangoText.text = dango_co.ToString();
+        button = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -46,7 +50,7 @@ public class d_dangoOp : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
 
         //if (Input.touchCount > 0) TapInput();
-        
+
     }
 
 
@@ -181,18 +185,14 @@ public class d_dangoOp : MonoBehaviour
         if (dango_co > 0)
         {
             dango_co--;
+            dangoText.text = dango_co.ToString();
             dango.SetActive(true);
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
+        //if (master.GetComponent<h_Master>().dog_count >= 3) master.GetComponent<h_Master>().DogStatus(); 
         dango_op = true;
     }
-
-
-    private void OnGUI()
-    {
-        GUI.skin.label.fontSize = 50;
-        GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)dango_co));
-    }
+    
 
     public int DangoCount()
     {
@@ -210,6 +210,7 @@ public class d_dangoOp : MonoBehaviour
     {
         dango_op = false;
         master.GetComponent<h_Master>().DogStatus();
+        button.Play();
         Invoke("sceneRe", 0.5f);
     }
 

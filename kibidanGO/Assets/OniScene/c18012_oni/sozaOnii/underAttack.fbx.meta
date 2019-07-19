@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 7884085ccee0ab44daa33e03c0dce5c5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Akaoni_model_0001:polySurface17
+    100002: group
+    100004: joint1
+    100006: joint10
+    100008: joint11
+    100010: joint12
+    100012: joint13
+    100014: joint14
+    100016: joint15
+    100018: joint19
+    100020: joint2
+    100022: joint20
+    100024: joint21
+    100026: joint22
+    100028: joint23
+    100030: joint24
+    100032: joint25
+    100034: joint26
+    100036: joint27
+    100038: joint28
+    100040: joint29
+    100042: joint3
+    100044: joint30
+    100046: joint31
+    100048: joint32
+    100050: joint33
+    100052: joint34
+    100054: joint4
+    100056: joint5
+    100058: joint6
+    100060: joint7
+    100062: joint8
+    100064: joint9
+    100066: locator1
+    100068: pasted__joint10
+    100070: pasted__joint11
+    100072: pasted__joint22
+    100074: pasted__joint23
+    100076: pasted__joint24
+    100078: pasted__joint25
+    100080: pasted__joint26
+    100082: pasted__joint27
+    100084: pasted__joint8
+    100086: pasted__joint9
+    100088: pasted__pasted__joint22
+    100090: pasted__pasted__joint23
+    100092: pasted__pasted__joint23 1
+    100094: pasted__pasted__joint24
+    100096: pasted__pasted__joint24 1
+    100098: pasted__pasted__joint25
+    100100: pasted__pasted__joint26
+    100102: pasted__pasted__joint27
+    100104: pasted__pasted__joint28
+    100106: pasted__pasted__joint29
+    100108: pasted__pasted__joint30
+    100110: pasted__pasted__joint31
+    100112: polySurface3
+    100114: polySurface4
+    100116: polySurface5
+    100118: transform16
+    100120: transform17
+    100122: //RootNode
+    400000: Akaoni_model_0001:polySurface17
+    400002: group
+    400004: joint1
+    400006: joint10
+    400008: joint11
+    400010: joint12
+    400012: joint13
+    400014: joint14
+    400016: joint15
+    400018: joint19
+    400020: joint2
+    400022: joint20
+    400024: joint21
+    400026: joint22
+    400028: joint23
+    400030: joint24
+    400032: joint25
+    400034: joint26
+    400036: joint27
+    400038: joint28
+    400040: joint29
+    400042: joint3
+    400044: joint30
+    400046: joint31
+    400048: joint32
+    400050: joint33
+    400052: joint34
+    400054: joint4
+    400056: joint5
+    400058: joint6
+    400060: joint7
+    400062: joint8
+    400064: joint9
+    400066: locator1
+    400068: pasted__joint10
+    400070: pasted__joint11
+    400072: pasted__joint22
+    400074: pasted__joint23
+    400076: pasted__joint24
+    400078: pasted__joint25
+    400080: pasted__joint26
+    400082: pasted__joint27
+    400084: pasted__joint8
+    400086: pasted__joint9
+    400088: pasted__pasted__joint22
+    400090: pasted__pasted__joint23
+    400092: pasted__pasted__joint23 1
+    400094: pasted__pasted__joint24
+    400096: pasted__pasted__joint24 1
+    400098: pasted__pasted__joint25
+    400100: pasted__pasted__joint26
+    400102: pasted__pasted__joint27
+    400104: pasted__pasted__joint28
+    400106: pasted__pasted__joint29
+    400108: pasted__pasted__joint30
+    400110: pasted__pasted__joint31
+    400112: polySurface3
+    400114: polySurface4
+    400116: polySurface5
+    400118: transform16
+    400120: transform17
+    400122: //RootNode
+    2100000: lambert3
+    2100002: lambert1
+    2300000: Akaoni_model_0001:polySurface17
+    3300000: Akaoni_model_0001:polySurface17
+    4300000: polySurface5
+    4300002: Akaoni_model_0001:polySurface17
+    7400000: underAttack
+    9500000: //RootNode
+    13700000: polySurface5
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: underAttack
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,29 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class h_SceneController : MonoBehaviour
 {
-    //h_Master masterScript;
+    h_Master masterScript;
 
     // 動物を探しに行くボタン
     Button friendsButton;
     // ダンゴを作るボタン
     Button dangoButton;
+    // ダンゴの数を表示するテキスト
+    Text dangoCo_text;
 
-    // テスト用ボタン
-    Button testButton;
-    // 雲を動かす(テスト用)
-    public int test_co = 0;
-    
+    [SerializeField] public AudioClip button_sound;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        // 動物を持っているかの確認
-        //masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         // あとでTagに替える
         friendsButton = GameObject.Find("FriendsButton").GetComponent<Button>();
         dangoButton = GameObject.Find("DangoButton").GetComponent<Button>();
-
-        // テスト用
-        testButton = GameObject.FindGameObjectWithTag("Player").GetComponent<Button>();
+        // あとでTag替え
+        dangoCo_text = GameObject.Find("DangoCount").GetComponent<Text>();
+        audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+        // ダンゴの数を表示
+        DangoTextDisplay();
     }
 
     // Update is called once per frame
@@ -37,32 +38,22 @@ public class h_SceneController : MonoBehaviour
 
     }
 
+    // 仲間を探すボタン
     public void OnClickedFriendsButton()
     {
-        ChangeARCameraScene();
+        audioSource.PlayOneShot(button_sound);
+        SceneManager.LoadScene("ARCamera");
     }
 
+    // ダンゴボタン
     public void OnClickedDangoButton()
     {
-
+        audioSource.PlayOneShot(button_sound);
+        SceneManager.LoadScene("KibiScene");
     }
 
-    // ARCameraシーンに遷移する
-    void ChangeARCameraScene()
+    void DangoTextDisplay()
     {
-        SceneManager.LoadScene("ARCamera");
-        //walk_co += 1; 
+        dangoCo_text.text = System.Convert.ToString(masterScript.dango_co);
     }
-
-    public void OnClickedTestButton()
-    {
-        //SceneManager.LoadScene("OniScene");
-        // テスト用
-        h_GameController.getComp = true;
-        // テスト用
-        h_ImageController.getComp = true;
-        test_co += 1;
-    }
-
-
 }

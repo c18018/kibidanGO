@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class O_GameControllerScript : MonoBehaviour
+public class o_GameControllerScript : MonoBehaviour
 {
     float time = 0;
-    O_OniScript oniSc;
-    O_PlayerScript plaSc;
+    o_OniScript oniSc;
+    o_PlayerScript plaSc;
     
     [System.NonSerialized] public float waitTime = 0;
 
@@ -18,8 +18,8 @@ public class O_GameControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<O_OniScript>();
-        plaSc = GameObject.FindGameObjectWithTag("GameController").GetComponent<O_PlayerScript>();
+        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<o_OniScript>();
+        plaSc = GameObject.FindGameObjectWithTag("GameController").GetComponent<o_PlayerScript>();
         // あとでTagをかえる↓
         attackText = GameObject.FindGameObjectWithTag("Player").GetComponent<Text>();
         attackText.text = "";
@@ -68,10 +68,10 @@ public class O_GameControllerScript : MonoBehaviour
         }
     }
    
-    private void OnGUI()
+    /*private void OnGUI()
     {
         GUI.skin.label.fontSize = 50;
         GUI.Label(new Rect(1700, 100, 500, 300), System.Convert.ToString(oniSc.OniHP) + " / " + oniHp);
         GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)time));
-    }
+    }*/
 }
