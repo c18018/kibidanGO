@@ -38,6 +38,7 @@ public class d_dogTarget : MonoBehaviour
         if (other.gameObject.tag == "Dango")
         {
             get_co++;
+            GetComponent<AudioSource>().Play();
         }
     }
 }

@@ -21,7 +21,7 @@ public class m_SceneController : MonoBehaviour
     {
         Debug.Log(true);
         end_display.SetActive(true);
-        master.GetComponent<h_Master>().MonkeyStatus();
+        master.GetComponent<h_Master>().Monkey = true;
         return true;
     }
 
