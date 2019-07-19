@@ -33,7 +33,7 @@ public class h_GameController : MonoBehaviour
     void Update()
     {
         //Debug.Log(scene_script.test_co);
-        Debug.Log(getComp);
+        //Debug.Log(getComp);
         ImageComponentGet();
     }
 
