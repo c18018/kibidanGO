@@ -52,8 +52,15 @@ public class h_SceneController : MonoBehaviour
         SceneManager.LoadScene("KibiScene");
     }
 
+    // ダンゴの数テキスト表示
     void DangoTextDisplay()
     {
         dangoCo_text.text = System.Convert.ToString(masterScript.dango_co);
+    }
+
+    public void PanelEvent()
+    {
+        if (masterScript.Dog && masterScript.Monkey && masterScript.Pheasant)
+            SceneManager.LoadScene("OniScene");
     }
 }
