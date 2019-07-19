@@ -42,6 +42,7 @@ public class d_dangoOp : MonoBehaviour
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
+        get_co = master.GetComponent<h_Master>().dog_co;
         dangoText.text = dango_co.ToString();
         audio = GetComponent<AudioSource>();
     }
@@ -191,6 +192,7 @@ public class d_dangoOp : MonoBehaviour
             dango.SetActive(true);
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
         }
+
         if (get_co >= 3) {
             master.GetComponent<h_Master>().DogStatus();
             DogEnd();
