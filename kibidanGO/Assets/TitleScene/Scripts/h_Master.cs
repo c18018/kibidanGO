@@ -15,6 +15,7 @@ public class h_Master : MonoBehaviour
     [SerializeField] public bool Monkey = false;
     [SerializeField] public bool Pheasant = false;
 
+    // HomeSceneの動物を取れているかどうか
     [System.NonSerialized] public bool haveDog = false;
     [System.NonSerialized] public bool haveMon = false;
     [System.NonSerialized] public bool havePhe = false;
@@ -56,15 +57,7 @@ public class h_Master : MonoBehaviour
 
     public void PheasantStatus()
     {
-
-    }
-
-    void HomeStatus()
-    {
-        if(SceneManager.GetActiveScene().name == "HomeScene")
-        {
-            
-        }
+        Pheasant = true;
     }
 
     void ObjectGet()

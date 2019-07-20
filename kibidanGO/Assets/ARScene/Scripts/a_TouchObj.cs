@@ -63,7 +63,7 @@ public class a_TouchObj : MonoBehaviour
 
             if (hit.collider.tag == "Pheasant" && kijiScene)
             {
-                SceneManager.LoadScene("kiji");
+                SceneManager.LoadScene("kizi");
             }
 
             if (hit.collider.tag == "Mochi" && mochiTf)
