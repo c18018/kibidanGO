@@ -13,12 +13,16 @@ public class Shooter : MonoBehaviour
     public float shotTotque;
     public int shotCount;
     h_Master Master;
+    public Text shotCountText;
+    
 
     // Use this for initialization
     void Start()
     {
         Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         shotCount = Master.dango_co;
+        shotCountText.text = shotCount.ToString();
+        Debug.Log("trtrtr");
     }
 
     // Update is called once per frame
@@ -46,7 +50,10 @@ public class Shooter : MonoBehaviour
             }
 
             shotCount -= 1;
-
+            shotCountText.text = shotCount.ToString();
+            
+            
+           
 
         }
     }
