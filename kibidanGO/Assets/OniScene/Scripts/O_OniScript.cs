@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class O_OniScript : MonoBehaviour
 {
@@ -77,6 +78,13 @@ public class O_OniScript : MonoBehaviour
                 startTime = 2.0f;
             }
 
+            if(OniHP <= 0)
+            {
+                audioSource.PlayOneShot(oni_sound);
+                Invoke("ChangeEndScene", 1.0f);
+            }
+                
+
             yield return new WaitForSeconds(2.0f);
 
             oni_attackPattern = Random.Range(1, 4);
@@ -122,6 +130,11 @@ public class O_OniScript : MonoBehaviour
             playerSc.monkey_button.interactable = false;
             playerSc.pheasant_button.interactable = false;
         }
+    }
+
+    void ChangeEndScene()
+    {
+        SceneManager.LoadScene("EndScene");
     }
 
     void OniAnimStop()
