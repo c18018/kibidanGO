@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class h_ImageController : MonoBehaviour
 {
-    //bool getComp = false;
-
     Image dog;
     Image monkey;
     Image pheasant;
 
-    public Image animal;
+    Image animal;
     float red, green, blue;
     
     h_Master masterScript;
