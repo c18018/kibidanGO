@@ -92,6 +92,7 @@ public class MixController : MonoBehaviour
     // Update is called once per frame
     public void OnClick()
     {
+        GetComponent<AudioSource>().Play();
         Debug.Log("clicked");
         move = true;
         if (counter >= counterMax)

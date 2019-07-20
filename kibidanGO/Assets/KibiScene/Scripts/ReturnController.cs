@@ -16,7 +16,11 @@ public class ReturnController : MonoBehaviour
     public void OnClick()
     {
         Master.dango_co += 5;
+        GetComponent<AudioSource>().Play();
+        Invoke("sceneRe", 0.5f);
+    }
+    private void sceneRe()
+    {
         SceneManager.LoadScene("HomeScene");
     }
-
 }
