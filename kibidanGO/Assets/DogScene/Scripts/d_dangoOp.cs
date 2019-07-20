@@ -36,17 +36,24 @@ public class d_dangoOp : MonoBehaviour
 
     public GameObject end_display = null;
 
+
     private void Start()
     {
-        dango_op = true;
         dango.transform.position = dangoPos;
         master = GameObject.FindGameObjectWithTag("Master");
         dango_co = master.GetComponent<h_Master>().dango_co;
         get_co = master.GetComponent<h_Master>().dog_co;
         dangoText.text = dango_co.ToString();
         audio = GetComponent<AudioSource>();
-        Invoke("DangoPos0", 1.0f);
+        Invoke("dangoThrow", 0.5f);
     }
+
+
+    private void dangoThrow()
+    {
+        dango_op = true;
+    }
+    
 
     void Update()
     {
@@ -193,14 +200,15 @@ public class d_dangoOp : MonoBehaviour
             dangoText.text = dango_co.ToString();
             dango.SetActive(true);
             get_co = dog_relay.GetComponent<d_dogTarget>().get_co;
+            dango_op = true;
         }
 
         if (get_co >= 3) {
             master.GetComponent<h_Master>().DogStatus();
             DogEnd();
+            dango_op = false;
         }
 
-        dango_op = true;
     }
     
 
@@ -229,4 +237,5 @@ public class d_dangoOp : MonoBehaviour
     {
         SceneManager.LoadScene("ARCamera");
     }
+    
 }
