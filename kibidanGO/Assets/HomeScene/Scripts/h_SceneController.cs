@@ -16,7 +16,7 @@ public class h_SceneController : MonoBehaviour
     Text dangoCo_text;
 
     [SerializeField] public AudioClip button_sound;
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,11 @@ public class h_SceneController : MonoBehaviour
     public void OnClickedFriendsButton()
     {
         audioSource.PlayOneShot(button_sound);
+        Invoke("ChangeAR", 0.5f);
+    }
+
+    void ChangeAR()
+    {
         SceneManager.LoadScene("ARCamera");
     }
 
@@ -49,6 +54,11 @@ public class h_SceneController : MonoBehaviour
     public void OnClickedDangoButton()
     {
         audioSource.PlayOneShot(button_sound);
+        Invoke("ChangeKibi", 0.5f);
+    }
+
+    void ChangeKibi()
+    {
         SceneManager.LoadScene("KibiScene");
     }
 

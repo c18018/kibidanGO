@@ -11,8 +11,6 @@ public class o_GameControllerScript : MonoBehaviour
     
     [System.NonSerialized] public float waitTime = 0;
 
-    string oniHp = "200";
-
     Text attackText;
 
     // Start is called before the first frame update
@@ -40,7 +38,7 @@ public class o_GameControllerScript : MonoBehaviour
 
     void ChangeText()
     {
-        if (oniSc.m_oniupper)
+        if (oniSc.oni_upper)
         {
             attackText.text = " うえ　　からこうげきがくる!!";
             if (plaSc.countTime)
@@ -48,7 +46,7 @@ public class o_GameControllerScript : MonoBehaviour
                 attackText.text = " うえ　　からこうげきがくる!!　" + (int)waitTime;
             }
         }
-        else if (oniSc.m_onimiddle)
+        else if (oniSc.oni_middle)
         {
             attackText.text = "まんなか　からこうげきがくる!!";
             if (plaSc.countTime)
@@ -57,7 +55,7 @@ public class o_GameControllerScript : MonoBehaviour
                 attackText.text = "まんなか　からこうげきがくる!!　" + (int)waitTime;
             }
         }
-        else if (oniSc.m_onilower)
+        else if (oniSc.oni_lower)
         {
             attackText.text = "　した　　からこうげきがくる!!";
             if (plaSc.countTime)
@@ -67,11 +65,4 @@ public class o_GameControllerScript : MonoBehaviour
             }
         }
     }
-   
-    /*private void OnGUI()
-    {
-        GUI.skin.label.fontSize = 50;
-        GUI.Label(new Rect(1700, 100, 500, 300), System.Convert.ToString(oniSc.OniHP) + " / " + oniHp);
-        GUI.Label(new Rect(50, 100, 500, 300), System.Convert.ToString((int)time));
-    }*/
 }

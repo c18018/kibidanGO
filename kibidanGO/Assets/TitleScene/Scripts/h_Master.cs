@@ -15,6 +15,11 @@ public class h_Master : MonoBehaviour
     [SerializeField] public bool Monkey = false;
     [SerializeField] public bool Pheasant = false;
 
+    // HomeSceneの動物を取れているかどうか
+    [System.NonSerialized] public bool haveDog = false;
+    [System.NonSerialized] public bool haveMon = false;
+    [System.NonSerialized] public bool havePhe = false;
+
     GameObject relayObj;
 
     [System.NonSerialized] public int dog_co = 0;
@@ -39,7 +44,6 @@ public class h_Master : MonoBehaviour
         if (dog_co >= 3)
         {
             Dog = true;
-            relayObj.GetComponent<d_dangoOp>().DogEnd();
         }
 
         Debug.Log("dango_co:" + dango_co);
@@ -53,7 +57,7 @@ public class h_Master : MonoBehaviour
 
     public void PheasantStatus()
     {
-
+        Pheasant = true;
     }
 
     void ObjectGet()

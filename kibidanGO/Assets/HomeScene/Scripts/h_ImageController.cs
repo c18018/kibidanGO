@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class h_ImageController : MonoBehaviour
 {
-    bool getComp = false;
+    Image dog;
+    Image monkey;
+    Image pheasant;
 
-    [SerializeField] Image animal;
-    float red, green, blue, alfa;
+    Image animal;
+    float red, green, blue;
+    
     h_Master masterScript;
 
-    // テスト用
-    //h_SceneController sceneSc;
-
-    [SerializeField] public AudioClip[] audioClip = new AudioClip[3];
-    AudioClip sound;
+    [SerializeField] public AudioClip[] sound = new AudioClip[3];
     AudioSource audioSource;
     bool oneshot = false;
 
@@ -24,67 +23,95 @@ public class h_ImageController : MonoBehaviour
     {
         masterScript = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
-        // テスト用
-        //sceneSc = gameObject.GetComponentInChildren<h_SceneController>();
-        // Startが毎回動くか確認する！
-        if(masterScript.Dog || masterScript.Monkey || masterScript.Pheasant)
-            getComp = true;
+
+        dog = GameObject.FindGameObjectWithTag("Dog").GetComponent<Image>();
+        monkey = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Image>();
+        pheasant = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Image>();
+
+        if (masterScript.haveDog)
+            dog.color = new Color(255, 255, 255);
+
+        if (masterScript.haveMon)
+            monkey.color = new Color(255, 255, 255);
+
+        if (masterScript.havePhe)
+            pheasant.color = new Color(255, 255, 255);
+
+        oneshot = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         AnimalGetComponent();
+        //Debug.Log("d_: " + dog_have + "m_: " + monkey_have + "p_: " + pheasant_have);
+    }
+
+    void AnimalGetComponent()
+    {
+        if (masterScript.Dog)
+        {
+            animal = dog;
+            if(!masterScript.haveDog && animal != null)
+                AnimalMove();
+
+            if (oneshot && !masterScript.haveDog)
+            {
+                audioSource.PlayOneShot(sound[0]);
+                oneshot = false;
+            }
+
+            if (red == 2.0f)
+                masterScript.haveDog = true;
+        }
+
+        if (masterScript.Monkey)
+        {
+            animal = monkey;
+            if (!masterScript.haveMon && animal != null)
+                AnimalMove();
+
+            if (oneshot && !masterScript.haveMon)
+            {
+                audioSource.PlayOneShot(sound[1]);
+                oneshot = false;
+            }
+
+            if (red == 2.0f)
+                masterScript.haveMon = true;
+        }
+
+        if (masterScript.Pheasant)
+        {
+            animal = pheasant;
+            if (!masterScript.havePhe && animal != null)
+                AnimalMove();
+
+            if (oneshot && masterScript.havePhe)
+            {
+                audioSource.PlayOneShot(sound[2]);
+                oneshot = false;
+            }
+
+            if (red == 2.0f)
+                masterScript.havePhe = true;
+        }
     }
 
     void AnimalMove()
     {
-        if(animal != null)
+        red = animal.color.r;
+        green = animal.color.g;
+        blue = animal.color.b;
+
+        animal.color = new Color(red + 0.01f, green + 0.01f, blue + 0.01f);
+        if (red > 1.5f)
         {
-            animal.color = new Color(red, blue, green, alfa);
-            
-            if (red < 1.0f)
-            {
-                red += 1.0f * Time.deltaTime;
-                green += 1.0f * Time.deltaTime;
-                blue += 1.0f * Time.deltaTime;
-            }
-                
+            animal = null;
+            red = 2.0f;
+            green = 2.0f;
+            blue = 2.0f;
         }
-    }
-    
-    void AnimalGetComponent()
-    {
-        if (getComp)
-        {
-            if (masterScript.Dog)
-            {
-                animal = GameObject.FindGameObjectWithTag("Dog").GetComponent<Image>();
-                sound = audioClip[0];
-                oneshot = true;
-            }
-            else if (masterScript.Monkey)
-            {
-                animal = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Image>();
-                sound = audioClip[1];
-                oneshot = true;
-            }
-            else if (masterScript.Pheasant)
-            {
-                animal = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Image>();
-                sound = audioClip[2];
-                oneshot = true;
-            }
-            red = animal.color.r;
-            green = animal.color.g;
-            blue = animal.color.b;
-            alfa = animal.color.a;
-            getComp = false;
-        }
-        if(oneshot)
-            audioSource.PlayOneShot(sound);
-        
-        oneshot = false;
-        AnimalMove();
+        Debug.Log(red + "  " + green + "  " + blue);
     }
 }
