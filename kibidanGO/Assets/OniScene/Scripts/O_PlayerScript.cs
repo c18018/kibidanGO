@@ -53,7 +53,7 @@ public class O_PlayerScript : MonoBehaviour
         // Animatorを取得
         dog_animator = GameObject.FindGameObjectWithTag("Dog").GetComponent<Animator>();
         monkey_animator = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
-        //pheasant_animator = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Animator>();
+        pheasant_animator = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Animator>();
 
         audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
 
@@ -144,7 +144,7 @@ public class O_PlayerScript : MonoBehaviour
         }
         else if(pheasant_onclick && !oniSc.oni_upper)
         {
-            //pheasant_animator.SetTrigger("");
+            pheasant_animator.SetTrigger("kiziFloght");
             audioSource.PlayOneShot(sounds[2]);
             animal_attack = 10;
             oniSc.OniHP -= animal_attack;
