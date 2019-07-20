@@ -1049,8 +1049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ef95617de16354186ab698d56b2417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dog_ani: {fileID: 0}
-  mon_ani: {fileID: 0}
+  dog_animator: {fileID: 0}
+  monkey_animator: {fileID: 0}
+  pheasant_animator: {fileID: 0}
 --- !u!4 &1072612514
 Transform:
   m_ObjectHideFlags: 0

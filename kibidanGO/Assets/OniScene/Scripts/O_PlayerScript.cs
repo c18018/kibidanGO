@@ -156,4 +156,9 @@ public class o_PlayerScript : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
     }
+
+    IEnumerator AnimalAttack()
+    {
+        return null;
+    }
 }
