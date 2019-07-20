@@ -3,23 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class o_GameControllerScript : MonoBehaviour
+public class O_GameControllerScript : MonoBehaviour
 {
     float waitTime;
     float time = 0;
-    o_OniScript oniSc;
-    o_PlayerScript playerSc;
+    O_OniScript oniSc;
+    O_PlayerScript playerSc;
 
     Text log_text;
     [System.NonSerialized] public bool damage_log = false;
 
+    Slider oniHP_slider;
+    int minValue;
+    int oni_nowHP;
+    Text oniHP_text;
+
     // Start is called before the first frame update
     void Start()
     {
-        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<o_OniScript>();
-        playerSc = GameObject.FindGameObjectWithTag("GameController").GetComponent<o_PlayerScript>();
+        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<O_OniScript>();
+        playerSc = GameObject.FindGameObjectWithTag("GameController").GetComponent<O_PlayerScript>();
         // あとでTagをかえる↓
         log_text = GameObject.FindGameObjectWithTag("Player").GetComponent<Text>();
+        oniHP_slider = GameObject.FindGameObjectWithTag("Cloud1").GetComponent<Slider>();
+        oniHP_text = GameObject.FindGameObjectWithTag("Cloud2").GetComponent<Text>();
+        
+        minValue = 0;
+        oniHP_slider.value = oniSc.OniHP;
+
         log_text.text = "";
     }
 
@@ -28,6 +39,7 @@ public class o_GameControllerScript : MonoBehaviour
     {
         ChangeText();
         Timer();
+        SliderController();
     }
 
     void ChangeText()
@@ -83,5 +95,18 @@ public class o_GameControllerScript : MonoBehaviour
             time = 0.0f;
             playerSc.waitTime_countStart = false;
         }
+    }
+
+    void SliderController()
+    {
+        if(oniHP_slider.value != oniSc.OniHP)
+        {
+            oniHP_slider.value -= 1;
+        }
+
+        if (oniHP_slider.value <= minValue)
+            oniHP_slider.value = minValue;
+
+        oniHP_text.text = oniHP_slider.value + " / 200";
     }
 }

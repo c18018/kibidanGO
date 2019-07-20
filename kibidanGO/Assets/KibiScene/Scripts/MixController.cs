@@ -18,9 +18,21 @@ public class MixController : MonoBehaviour
     public int interval = 1;
     public bool button = true;
 
+    h_Master Master;
+
+    public bool water;
+    public bool mochi;
+    public bool sugar;
+
+    public bool search;
+    public Text message;
+
+    public GameObject[] Zairyou = new GameObject[3];
+
     // Start is called before the first frame update
     void Start()
     {
+
         Invoke("False", 0);
 
         Invoke("Cancel", 3);
@@ -28,6 +40,24 @@ public class MixController : MonoBehaviour
         Invoke("True", 4);
 
         speed = 6.0f;
+
+        Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        water = Master.water;
+        mochi = Master.mochi;
+        sugar = Master.sugar;
+
+        if(water && mochi && sugar)
+        {
+            search = true;
+            message.text = "ボタンをタップしてまぜよう！";
+            Zairyou[0].SetActive(true);
+            Zairyou[1].SetActive(true);
+            Zairyou[2].SetActive(true);
+        }
+        else
+        {
+            message.text = "ざいりょうがたりません";
+        }
     }
 
     void False()
@@ -47,7 +77,7 @@ public class MixController : MonoBehaviour
 
     private void Update()
     {
-        if (move)
+        if (move && search)
         {
             Hera.transform.RotateAround(new Vector3(0, 0, 0), Vector3.up, speed);
             timer += Time.deltaTime;
