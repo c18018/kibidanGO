@@ -44,6 +44,7 @@ public class o_OniScript : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("TurnController()");
             yield return new WaitForSeconds(1.0f);
             oni_attackPattern = Random.Range(1, 4);
             Debug.Log("Random" + oni_attackPattern);
@@ -51,16 +52,22 @@ public class o_OniScript : MonoBehaviour
             {
                 oni_animator.SetTrigger("upAttack");
                 oni_upper = true;
+                Invoke("OniAnimStop", 2.0f);
+                Invoke("OniAnimStart", 5.0f);
             }
             else if(oni_attackPattern == 2)
             {
                 oni_animator.SetTrigger("mediumAttack");
                 oni_middle = true;
+                Invoke("OniAnimStop", 2.0f);
+                Invoke("OniAnimStart", 5.0f);
             }
             else if(oni_attackPattern == 3)
             {
                 oni_animator.SetTrigger("underAttack");
                 oni_lower = true;
+                Invoke("OniAnimStop", 2.0f);
+                Invoke("OniAnimStart", 5.0f);
             }
             
             yield return playerSc.StartCoroutine("PlayerButtonSelect");
@@ -69,9 +76,22 @@ public class o_OniScript : MonoBehaviour
             oni_middle = false;
             oni_lower = false;
 
-            //m_playerScript.dogButton.interactable = false;
-            //m_playerScript.monkeyButton.interactable = false;
-            //m_playerScript.pheasantButton.interactable = false;
+            playerSc.stop_text = false;
+
+            // ボタンのハイライトの初期化
+            playerSc.dog_button.interactable = false;
+            playerSc.monkey_button.interactable = false;
+            playerSc.pheasant_button.interactable = false;
         }
+    }
+
+    void OniAnimStop()
+    {
+        oni_animator.SetFloat("movingSpeed", 0.0f);
+    }
+
+    void OniAnimStart()
+    {
+        oni_animator.SetFloat("movingSpeed", 1.0f);
     }
 }
