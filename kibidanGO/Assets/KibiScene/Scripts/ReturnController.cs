@@ -6,33 +6,24 @@ using UnityEngine.SceneManagement;
 public class ReturnController : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    h_Master Master;
+
+    private void Start()
     {
-        Invoke("False", 0);
-
-        Invoke("Cancel", 3);
-
-        Invoke("True", 3);
-    }
-
-    void False()
-    {
-        gameObject.SetActive(false);
-    }
-
-    void Cancel()
-    {
-        CancelInvoke("Call");
-    }
-
-    void True()
-    {
-        gameObject.SetActive(true);
+        Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        Master.water = false;
+        Master.sugar = false;
+        Master.mochi = false;
     }
 
     public void OnClick()
     {
+        Master.dango_co += 5;
+        GetComponent<AudioSource>().Play();
+        Invoke("sceneRe", 0.5f);
+    }
+    private void sceneRe()
+    {
         SceneManager.LoadScene("HomeScene");
     }
-
 }
