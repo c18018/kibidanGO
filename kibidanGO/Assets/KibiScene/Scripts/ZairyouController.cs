@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class ZairyouController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float speed = 4.0f;
+    float time = 0;
 
-    // Update is called once per frame
-    void Update()
+    public GameObject target;
+
+    void Start()
     {
-        Transform myTransform = this.transform;
+        Invoke("False",3);
+    }
 
-        Vector3 pos = myTransform.position;
-        if (pos.x >= 0 && pos.y >= 0)
-        {
-            pos.x += 0f;
-            pos.y += 0f;
+    void Update()
 
-        }
-        else
-        {
-            pos.x += 0.05f;
-            pos.y += 0.025f;
-        }
-        myTransform.position = pos;
+    {
+        time += Time.deltaTime;
+        float step = speed * Time.deltaTime;
+
+
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
 
     }
+
+    void False()
+    {
+        Destroy(gameObject);
+    }
+
 }

@@ -14,16 +14,22 @@ public class o_PlayerScript : MonoBehaviour
     [System.NonSerialized] public Button dog_button, monkey_button, pheasant_button;
 
     int animal_attack;
-    int Animal_attack
+    public int Animal_attack
     {
         get { return this.animal_attack; }
     }
 
-    float waitTime = 5.0f;
+    float player_waitTime;
+    public float Player_waitTime
+    {
+        get { return this.player_waitTime; }
+    }
 
-    [System.NonSerialized] public bool countTime = false;
+    [System.NonSerialized] public bool waitTime_countStart = false;
+    [System.NonSerialized] public bool getCountTime = false;
+    [System.NonSerialized] public bool stop_text = false;
 
-    public Animator dog_animator, monkey_animator, pheasant_animator;
+    Animator dog_animator, monkey_animator, pheasant_animator;
 
     // Start is called before the first frame update
     void Start()
@@ -50,64 +56,10 @@ public class o_PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("d_: " + dog_onclick + " m_: " + monkey_onclick + " p_: " + pheasant_onclick);
+        //Debug.Log("d_: " + dog_onclick + " m_: " + monkey_onclick + " p_: " + pheasant_onclick);
     }
 
-    public void OnClickedDogButton()
-    {
-            dog_onclick = true;
-            monkey_onclick = false;
-            pheasant_onclick = false;
-    }
-
-    public void OnClickedMonkeyButton()
-    {
-            dog_onclick = false;
-            monkey_onclick = true;
-            pheasant_onclick = false;
-    }
-
-    public void OnClickedPheasantButton()
-    {
-            dog_onclick = false;
-            monkey_onclick = false;
-            pheasant_onclick = true;
-    }
-
-    /*public void AnimatorSet()
-    {
-        Debug.Log("AnimatorSet()");
-        if(onDogButton && !m_oniScript.m_onilower)
-        {
-            animator_dog = true;
-            m_playerAttack = 5;
-            Invoke("PlayerAttack", 0.5f);
-            Debug.Log("イヌ　" + m_playerAttack + "ダメージ");
-        }
-        else if(onMonkeyButton && !m_oniScript.m_onimiddle)
-        {
-            animator_mon = true;
-            m_playerAttack = 10;
-            Invoke("PlayerAttack", 0.5f);
-            Debug.Log("サル　" + m_playerAttack + "ダメージ");
-        }
-        else if(onPheasantButton && !m_oniScript.m_oniupper)
-        {
-            m_playerAttack = 20;
-            Invoke("PlayerAttack", 0.5f);
-            Debug.Log("キジ　" + m_playerAttack + "ダメージ");
-        }
-
-        onDogButton = false;
-        onMonkeyButton = false;
-        onPheasantButton = false;
-    } */   
-
-    /*void PlayerAttack()
-    {
-        m_oniScript.OniHP -= m_playerAttack;
-    }*/
-
+    // プレイヤーのボタン選択時間
     public IEnumerator PlayerButtonSelect()
     {
         Debug.Log("PlayerButtonSelect()");
@@ -115,6 +67,8 @@ public class o_PlayerScript : MonoBehaviour
         dog_onclick = false;
         monkey_onclick = false;
         pheasant_onclick = false;
+
+        OniAttackSpeed();
 
         button_select = true;
 
@@ -124,7 +78,9 @@ public class o_PlayerScript : MonoBehaviour
             monkey_button.interactable = true;
             pheasant_button.interactable = true;
 
-            yield return new WaitForSeconds(5.0f);
+            waitTime_countStart = true;
+            getCountTime = true;
+            yield return new WaitForSeconds(player_waitTime);
             button_select = false;
         }
 
@@ -152,13 +108,78 @@ public class o_PlayerScript : MonoBehaviour
                 pheasant_button.interactable = false;
             }
         }
-        
+
+        yield return StartCoroutine("AnimalAttack");
+        gameSc.damage_log = false;
+        stop_text = true;
+        yield return new WaitForSeconds(2.0f);
+    }
+
+    // 動物の攻撃
+    IEnumerator AnimalAttack()
+    {
+        Debug.Log("AnimalAttack()");
+        gameSc.damage_log = true;
+        if(dog_onclick && !oniSc.oni_lower)
+        {
+            dog_animator.SetTrigger("dogAttack");
+            animal_attack = 10;
+            oniSc.OniHP -= animal_attack;
+            Debug.Log("いぬ　" + animal_attack);
+        }
+        else if(monkey_onclick && !oniSc.oni_middle)
+        {
+            monkey_animator.SetTrigger("saruAttack");
+            animal_attack = 15;
+            oniSc.OniHP -= animal_attack;
+            Debug.Log("さる　" + animal_attack);
+        }
+        else if(pheasant_onclick && !oniSc.oni_upper)
+        {
+            //pheasant_animator.SetTrigger("");
+            animal_attack = 20;
+            oniSc.OniHP -= animal_attack;
+            Debug.Log("きじ　" + animal_attack);
+        }
 
         yield return new WaitForSeconds(2.0f);
     }
 
-    IEnumerator AnimalAttack()
+    //鬼の攻撃がだんだんはやくなる
+    void OniAttackSpeed()
     {
-        return null;
+        if (oniSc.OniHP >= 150)
+            player_waitTime = 5.0f;
+        else if (oniSc.OniHP >= 100)
+            player_waitTime = 4.0f;
+        else if (oniSc.OniHP >= 50)
+            player_waitTime = 3.0f;
+        else
+            player_waitTime = 2.0f;
+
+        // 鬼のHPが０になったら０にする
+        if (oniSc.OniHP <= 0)
+            oniSc.OniHP = 0;
+    }
+
+    public void OnClickedDogButton()
+    {
+        dog_onclick = true;
+        monkey_onclick = false;
+        pheasant_onclick = false;
+    }
+
+    public void OnClickedMonkeyButton()
+    {
+        dog_onclick = false;
+        monkey_onclick = true;
+        pheasant_onclick = false;
+    }
+
+    public void OnClickedPheasantButton()
+    {
+        dog_onclick = false;
+        monkey_onclick = false;
+        pheasant_onclick = true;
     }
 }
