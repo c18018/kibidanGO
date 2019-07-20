@@ -45,7 +45,7 @@ public class d_dangoOp : MonoBehaviour
         get_co = master.GetComponent<h_Master>().dog_co;
         dangoText.text = dango_co.ToString();
         audio = GetComponent<AudioSource>();
-        Invoke("DangoPos0", 0.1f);
+        Invoke("DangoPos0", 1.0f);
     }
 
     void Update()
