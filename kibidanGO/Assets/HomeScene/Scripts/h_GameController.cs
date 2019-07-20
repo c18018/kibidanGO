@@ -11,6 +11,10 @@ public class h_GameController : MonoBehaviour
 
     bool getComp = false;
 
+    Image cloud1;
+    Image cloud2;
+    Image cloud3;
+
     Image cloud;
     float red, green, blue, alfa;
 
@@ -21,12 +25,23 @@ public class h_GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //scene_script = gameObject.GetComponentInChildren<h_SceneController>();
         masterSc = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
         audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
-        // trueにできるかあとで確認
-        if(masterSc.Dog || masterSc.Monkey || masterSc.Pheasant)
-            getComp = true;
+
+        cloud1 = GameObject.FindGameObjectWithTag("Cloud1").GetComponent<Image>();
+        cloud2 = GameObject.FindGameObjectWithTag("Cloud2").GetComponent<Image>();
+        cloud3 = GameObject.FindGameObjectWithTag("Cloud3").GetComponent<Image>();
+
+        if (masterSc.haveDog)
+            cloud1.color = new Color(0, 0, 0, 0);
+
+        if (masterSc.haveMon)
+            cloud2.color = new Color(0, 0, 0, 0);
+
+        if (masterSc.havePhe)
+            cloud3.color = new Color(0, 0, 0, 0);
+
+        oneshot = true;
     }
 
     // Update is called once per frame
@@ -37,57 +52,62 @@ public class h_GameController : MonoBehaviour
         ImageComponentGet();
     }
 
-    void CloudMove()
+    void ImageComponentGet()
     {
-        
-        if(cloud != null)
+        Debug.Log("r_: "+red + "g_: "+green+"b: "+blue);
+        if (masterSc.Dog)
         {
-            cloud.color = new Color(red, green, blue, alfa);
-            if(alfa > 0f)
-            {
-                alfa -= 1f * Time.deltaTime;
-                cloud.transform.Translate(1, 0, 0);
-            }
+            cloud = cloud1;
+            if (!masterSc.haveDog && cloud != null)
+                CloudMove();
 
-            if (alfa <= 0f)
+            if(oneshot && !masterSc.haveDog)
             {
-                alfa = 0f;
-                cloud.enabled = false;
+                audioSource.PlayOneShot(cloud_sound);
+                oneshot = false;
+            }
+        }
+
+        if (masterSc.Monkey)
+        {
+            cloud = cloud2;
+            if (!masterSc.haveMon && cloud != null)
+                CloudMove();
+
+            if (oneshot && !masterSc.haveMon)
+            {
+                audioSource.PlayOneShot(cloud_sound);
+                oneshot = false;
+            }
+        }
+
+        if (masterSc.Pheasant)
+        {
+            cloud = cloud3;
+            if (!masterSc.havePhe && cloud != null)
+                CloudMove();
+
+            if (oneshot && !masterSc.havePhe)
+            {
+                audioSource.PlayOneShot(cloud_sound);
+                oneshot = false;
             }
         }
     }
 
-    void ImageComponentGet()
+    void CloudMove()
     {
-        if (getComp)
-        {
-            // test_co を h_Master の動物取得に変更
-            // あとでTagに変更
-            if(masterSc.Dog)
-            {
-                cloud = GameObject.Find("Cloud1").GetComponent<Image>();
-                oneshot = true;
-            }
-            else if(masterSc.Monkey)
-            {
-                cloud = GameObject.Find("Cloud2").GetComponent<Image>();
-                oneshot = true;
-            }
-            else if(masterSc.Pheasant)
-            {
-                cloud = GameObject.Find("Cloud3").GetComponent<Image>();
-                oneshot = true;
-            }
-            red = cloud.color.r;
-            green = cloud.color.g;
-            blue = cloud.color.b;
-            alfa = cloud.color.a;
-            getComp = false;
-        }
-        if (oneshot)
-            audioSource.PlayOneShot(cloud_sound);
+        red = cloud.color.r;
+        green = cloud.color.g;
+        blue = cloud.color.b;
+        alfa = cloud.color.a;
 
-        oneshot = false;
-        CloudMove();
+        cloud.color = new Color(red, green, blue, alfa - 0.01f);
+        if (alfa < 0f)
+        {
+            alfa = -1.0f;
+            cloud.enabled = false;
+            cloud = null;
+        }
     }
 }
