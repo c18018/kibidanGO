@@ -3,40 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class o_PlayerScript : MonoBehaviour
+public class O_PlayerScript : MonoBehaviour
 {
-    o_OniScript oniSc;
-    o_GameControllerScript gameSc;
+    O_OniScript oniSc;
+    O_GameControllerScript gameSc;
 
     bool button_select = false;
     [System.NonSerialized] public bool dog_onclick, monkey_onclick, pheasant_onclick;
 
     [System.NonSerialized] public Button dog_button, monkey_button, pheasant_button;
 
+    // 動物の攻撃力
     int animal_attack;
     public int Animal_attack
     {
         get { return this.animal_attack; }
     }
 
+    // ボタン選択の待ち時間
     float player_waitTime;
     public float Player_waitTime
     {
         get { return this.player_waitTime; }
     }
 
+    // テキスト用(O_GameControllerScript)
     [System.NonSerialized] public bool waitTime_countStart = false;
     [System.NonSerialized] public bool getCountTime = false;
     [System.NonSerialized] public bool stop_text = false;
 
     Animator dog_animator, monkey_animator, pheasant_animator;
 
+    [SerializeField] public AudioClip[] sounds = new AudioClip[3];
+    [SerializeField] public AudioClip button_sound;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         // スクリプトを取得
-        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<o_OniScript>();
-        gameSc = gameObject.GetComponentInChildren<o_GameControllerScript>();
+        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<O_OniScript>();
+        gameSc = gameObject.GetComponentInChildren<O_GameControllerScript>();
 
         // ボタンを取得
         dog_button = GameObject.FindGameObjectWithTag("DogButton").GetComponent<Button>();
@@ -47,6 +54,8 @@ public class o_PlayerScript : MonoBehaviour
         dog_animator = GameObject.FindGameObjectWithTag("Dog").GetComponent<Animator>();
         monkey_animator = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
         //pheasant_animator = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Animator>();
+
+        audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
 
         dog_button.interactable = false;
         monkey_button.interactable = false;
@@ -123,6 +132,7 @@ public class o_PlayerScript : MonoBehaviour
         if(dog_onclick && !oniSc.oni_lower)
         {
             dog_animator.SetTrigger("dogAttack");
+            audioSource.PlayOneShot(sounds[0]);
             animal_attack = 10;
             oniSc.OniHP -= animal_attack;
             Debug.Log("いぬ　" + animal_attack);
@@ -130,6 +140,7 @@ public class o_PlayerScript : MonoBehaviour
         else if(monkey_onclick && !oniSc.oni_middle)
         {
             monkey_animator.SetTrigger("saruAttack");
+            audioSource.PlayOneShot(sounds[1]);
             animal_attack = 15;
             oniSc.OniHP -= animal_attack;
             Debug.Log("さる　" + animal_attack);
@@ -137,6 +148,7 @@ public class o_PlayerScript : MonoBehaviour
         else if(pheasant_onclick && !oniSc.oni_upper)
         {
             //pheasant_animator.SetTrigger("");
+            audioSource.PlayOneShot(sounds[2]);
             animal_attack = 20;
             oniSc.OniHP -= animal_attack;
             Debug.Log("きじ　" + animal_attack);
@@ -164,6 +176,7 @@ public class o_PlayerScript : MonoBehaviour
 
     public void OnClickedDogButton()
     {
+        audioSource.PlayOneShot(button_sound);
         dog_onclick = true;
         monkey_onclick = false;
         pheasant_onclick = false;
@@ -171,6 +184,7 @@ public class o_PlayerScript : MonoBehaviour
 
     public void OnClickedMonkeyButton()
     {
+        audioSource.PlayOneShot(button_sound);
         dog_onclick = false;
         monkey_onclick = true;
         pheasant_onclick = false;
@@ -178,6 +192,7 @@ public class o_PlayerScript : MonoBehaviour
 
     public void OnClickedPheasantButton()
     {
+        audioSource.PlayOneShot(button_sound);
         dog_onclick = false;
         monkey_onclick = false;
         pheasant_onclick = true;
