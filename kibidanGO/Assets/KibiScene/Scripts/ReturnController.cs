@@ -11,6 +11,9 @@ public class ReturnController : MonoBehaviour
     private void Start()
     {
         Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        Master.water = false;
+        Master.sugar = false;
+        Master.mochi = false;
     }
 
     public void OnClick()
