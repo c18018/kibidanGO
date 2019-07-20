@@ -6,32 +6,16 @@ using UnityEngine.SceneManagement;
 public class ReturnController : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    h_Master Master;
+
+    private void Start()
     {
-        Invoke("False", 0);
-
-        Invoke("Cancel", 3);
-
-        Invoke("True", 3);
-    }
-
-    void False()
-    {
-        gameObject.SetActive(false);
-    }
-
-    void Cancel()
-    {
-        CancelInvoke("Call");
-    }
-
-    void True()
-    {
-        gameObject.SetActive(true);
+        Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
     }
 
     public void OnClick()
     {
+        Master.dango_co += 5;
         SceneManager.LoadScene("HomeScene");
     }
 
