@@ -8,14 +8,16 @@ public class sphere : MonoBehaviour
     public GameObject Button;
     public GameObject cube;
     bool m_xPlus = true;
+    private int dir;
     h_Master Master;
-    private Vector3 Player_pos;
+    public float kizirote = 0.0f;
+    //private Vector3 Player_pos;
 
     // Start is called before the first frame update
     void Start()
     {
         Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
-        Player_pos = GetComponent<Transform>().position;
+        //Player_pos = GetComponent<Transform>().position;
     }
 
     // Update is called once per frame
@@ -23,24 +25,31 @@ public class sphere : MonoBehaviour
     {
         if (m_xPlus)
         {
+            transform.rotation = Quaternion.Euler(new Vector3(180, -90, -90));
             transform.position += new Vector3(30f * Time.deltaTime, 0f, 0f);
-            if (transform.position.x >= 100)
+            if (transform.position.x >= 70)
                 m_xPlus = false;
         }
         else
         {
             transform.position -= new Vector3(30f * Time.deltaTime, 0f, 0f);
-            if (transform.position.x <= -100)
+            
+            if (transform.position.x <= -70)
+            {
                 m_xPlus = true;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 90, -90));
+            }
+               
+            
         }
-        Vector3 diff = transform.position - Player_pos;
+        //Vector3 diff = transform.position - Player_pos;
 
-        if (diff.magnitude > 0.01f) //ベクトルの長さが0.01fより大きい場合にプレイヤーの向きを変える処理を入れる(0では入れないので）
+        /*if (diff.magnitude > 0.01f) //ベクトルの長さが0.01fより大きい場合にプレイヤーの向きを変える処理を入れる(0では入れないので）
         {
             transform.rotation = Quaternion.LookRotation(diff);  //ベクトルの情報をQuaternion.LookRotationに引き渡し回転量を取得しプレイヤーを回転させる
-        }
+        }*/
 
-        Player_pos = transform.position;
+        //Player_pos = transform.position;
     }
     void OnTriggerEnter(Collider other)
     {
