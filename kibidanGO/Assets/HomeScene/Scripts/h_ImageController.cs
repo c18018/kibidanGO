@@ -44,7 +44,6 @@ public class h_ImageController : MonoBehaviour
     void Update()
     {
         AnimalGetComponent();
-        //Debug.Log("d_: " + dog_have + "m_: " + monkey_have + "p_: " + pheasant_have);
     }
 
     void AnimalGetComponent()
@@ -112,6 +111,5 @@ public class h_ImageController : MonoBehaviour
             green = 2.0f;
             blue = 2.0f;
         }
-        Debug.Log(red + "  " + green + "  " + blue);
     }
 }
