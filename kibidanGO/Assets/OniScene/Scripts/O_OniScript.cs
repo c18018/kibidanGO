@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class o_OniScript : MonoBehaviour
 {
-    o_PlayerScript m_playerScript;
+    // プレイヤースクリプト
+    o_PlayerScript playerSc;
 
     // 鬼のHP
     private int m_oniHP = 200;
@@ -16,20 +17,19 @@ public class o_OniScript : MonoBehaviour
     }
 
     // 鬼の攻撃パターン
-    private int m_attackRandom = 0;
+    private int oni_attackPattern = 0;
     
     // 鬼がどこを攻撃しているか
-    [System.NonSerialized] public bool m_oniupper = false;
-    [System.NonSerialized] public bool m_onimiddle = false;
-    [System.NonSerialized] public bool m_onilower = false;
+    [System.NonSerialized] public bool oni_upper, oni_middle, oni_lower;
 
-    Animator animator;
+    Animator oni_animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_playerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<o_PlayerScript>();
-        animator = GetComponent<Animator>();
+        playerSc = GameObject.FindGameObjectWithTag("GameController").GetComponent<o_PlayerScript>();
+
+        oni_animator = GetComponent<Animator>();
        
         StartCoroutine("TurnController");
     }
@@ -44,41 +44,34 @@ public class o_OniScript : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2.0f);
-            m_attackRandom = Random.Range(1, 4);
-            Debug.Log("Random" + m_attackRandom);
-            if(m_attackRandom == 1)
-            {
-                animator.SetTrigger("upAttack");
-                m_oniupper = true;
-            }
-            else if(m_attackRandom == 2)
-            {
-                animator.SetTrigger("mediumAttack");
-                m_onimiddle = true;
-            }
-            else if(m_attackRandom == 3)
-            {
-                animator.SetTrigger("underAttack");
-                m_onilower = true;
-            }
-
             yield return new WaitForSeconds(1.0f);
-
-            yield return m_playerScript.StartCoroutine("PlayerButtonSelect");
-
-            yield return new WaitForSeconds(2.0f);
+            oni_attackPattern = Random.Range(1, 4);
+            Debug.Log("Random" + oni_attackPattern);
+            if(oni_attackPattern == 1)
+            {
+                oni_animator.SetTrigger("upAttack");
+                oni_upper = true;
+            }
+            else if(oni_attackPattern == 2)
+            {
+                oni_animator.SetTrigger("mediumAttack");
+                oni_middle = true;
+            }
+            else if(oni_attackPattern == 3)
+            {
+                oni_animator.SetTrigger("underAttack");
+                oni_lower = true;
+            }
             
-            m_playerScript.PlayerAttack();
+            yield return playerSc.StartCoroutine("PlayerButtonSelect");
+            
+            oni_upper = false;
+            oni_middle = false;
+            oni_lower = false;
 
-
-            m_oniupper = false;
-            m_onimiddle = false;
-            m_onilower = false;
-
-            m_playerScript.dogButton.interactable = false;
-            m_playerScript.monkeyButton.interactable = false;
-            m_playerScript.pheasantButton.interactable = false;
+            //m_playerScript.dogButton.interactable = false;
+            //m_playerScript.monkeyButton.interactable = false;
+            //m_playerScript.pheasantButton.interactable = false;
         }
     }
 }

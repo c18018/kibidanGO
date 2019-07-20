@@ -18,6 +18,9 @@ TagManager:
   - Cloud1
   - Cloud2
   - Cloud3
+  - DogButton
+  - MonkeyButton
+  - PheasantButton
   layers:
   - Default
   - TransparentFX

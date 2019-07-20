@@ -5,179 +5,155 @@ using UnityEngine.UI;
 
 public class o_PlayerScript : MonoBehaviour
 {
-    o_OniScript m_oniScript;
-    o_GameControllerScript m_gameConScript;
+    o_OniScript oniSc;
+    o_GameControllerScript gameSc;
 
-    bool m_buttonSelect = false;
-    [System.NonSerialized] public bool onDogButton = false;
-    [System.NonSerialized] public bool onMonkeyButton = false;
-    [System.NonSerialized] public bool onPheasantButton = false;
+    bool button_select = false;
+    [System.NonSerialized] public bool dog_onclick, monkey_onclick, pheasant_onclick;
 
-    [System.NonSerialized] public Button dogButton;
-    [System.NonSerialized] public Button monkeyButton;
-    [System.NonSerialized] public Button pheasantButton;
+    [System.NonSerialized] public Button dog_button, monkey_button, pheasant_button;
 
-    int m_playerAttack;
+    int animal_attack;
+    int Animal_attack
+    {
+        get { return this.animal_attack; }
+    }
 
     float waitTime = 5.0f;
 
     [System.NonSerialized] public bool countTime = false;
 
+    public Animator dog_animator, monkey_animator, pheasant_animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        m_oniScript = GameObject.FindGameObjectWithTag("Oni").GetComponent<o_OniScript>();
-        m_gameConScript = gameObject.GetComponentInChildren<o_GameControllerScript>();
+        // スクリプトを取得
+        oniSc = GameObject.FindGameObjectWithTag("Oni").GetComponent<o_OniScript>();
+        gameSc = gameObject.GetComponentInChildren<o_GameControllerScript>();
 
-        // Tagに替えろ！！
-        dogButton = GameObject.FindGameObjectWithTag("Dog").GetComponent<Button>();
-        monkeyButton = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Button>();
-        pheasantButton = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Button>();
+        // ボタンを取得
+        dog_button = GameObject.FindGameObjectWithTag("DogButton").GetComponent<Button>();
+        monkey_button = GameObject.FindGameObjectWithTag("MonkeyButton").GetComponent<Button>();
+        pheasant_button = GameObject.FindGameObjectWithTag("PheasantButton").GetComponent<Button>();
 
-        dogButton.interactable = false;
-        monkeyButton.interactable = false;
-        pheasantButton.interactable = false;
+        // Animatorを取得
+        dog_animator = GameObject.FindGameObjectWithTag("Dog").GetComponent<Animator>();
+        monkey_animator = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
+        //pheasant_animator = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Animator>();
+
+        dog_button.interactable = false;
+        monkey_button.interactable = false;
+        pheasant_button.interactable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (countTime)
-            m_gameConScript.Timer();
-
-        if (m_oniScript.OniHP <= 0)
-            m_oniScript.OniHP = 0;
+        Debug.Log("d_: " + dog_onclick + " m_: " + monkey_onclick + " p_: " + pheasant_onclick);
     }
 
     public void OnClickedDogButton()
     {
-        if (m_buttonSelect)
-        {
-            onDogButton = true;
-            onMonkeyButton = false;
-            onPheasantButton = false;
-        }
+            dog_onclick = true;
+            monkey_onclick = false;
+            pheasant_onclick = false;
     }
 
     public void OnClickedMonkeyButton()
     {
-        if (m_buttonSelect)
-        {
-            onDogButton = false;
-            onMonkeyButton = true;
-            onPheasantButton = false;
-        }
+            dog_onclick = false;
+            monkey_onclick = true;
+            pheasant_onclick = false;
     }
 
     public void OnClickedPheasantButton()
     {
-        if (m_buttonSelect)
-        {
-            onDogButton = false;
-            onMonkeyButton = false;
-            onPheasantButton = true;
-        }
+            dog_onclick = false;
+            monkey_onclick = false;
+            pheasant_onclick = true;
     }
 
-    public void PlayerAttack()
+    /*public void AnimatorSet()
     {
+        Debug.Log("AnimatorSet()");
         if(onDogButton && !m_oniScript.m_onilower)
         {
+            animator_dog = true;
             m_playerAttack = 5;
-            m_oniScript.OniHP -= m_playerAttack;
+            Invoke("PlayerAttack", 0.5f);
             Debug.Log("イヌ　" + m_playerAttack + "ダメージ");
         }
         else if(onMonkeyButton && !m_oniScript.m_onimiddle)
         {
+            animator_mon = true;
             m_playerAttack = 10;
-            m_oniScript.OniHP -= m_playerAttack;
+            Invoke("PlayerAttack", 0.5f);
             Debug.Log("サル　" + m_playerAttack + "ダメージ");
         }
         else if(onPheasantButton && !m_oniScript.m_oniupper)
         {
             m_playerAttack = 20;
-            m_oniScript.OniHP -= m_playerAttack;
+            Invoke("PlayerAttack", 0.5f);
             Debug.Log("キジ　" + m_playerAttack + "ダメージ");
         }
 
         onDogButton = false;
         onMonkeyButton = false;
         onPheasantButton = false;
-    }    
+    } */   
+
+    /*void PlayerAttack()
+    {
+        m_oniScript.OniHP -= m_playerAttack;
+    }*/
 
     public IEnumerator PlayerButtonSelect()
     {
-        m_buttonSelect = true;
+        Debug.Log("PlayerButtonSelect()");
 
-        dogButton.interactable = true;
-        monkeyButton.interactable = true;
-        pheasantButton.interactable = true;
+        dog_onclick = false;
+        monkey_onclick = false;
+        pheasant_onclick = false;
 
-        waitTime = 5.0f;
-        m_gameConScript.waitTime = 6.0f;
+        button_select = true;
 
-        if (m_oniScript.OniHP <= 150)
+        if (button_select)
         {
-            waitTime = 4.0f;
-            m_gameConScript.waitTime = 5.0f;
+            dog_button.interactable = true;
+            monkey_button.interactable = true;
+            pheasant_button.interactable = true;
+
+            yield return new WaitForSeconds(5.0f);
+            button_select = false;
         }
 
-        if (m_oniScript.OniHP <= 100)
+        if (!button_select)
         {
-            waitTime = 3.0f;
-            m_gameConScript.waitTime = 4.0f;
-        }
-
-        if (m_oniScript.OniHP <= 50)
-        {
-            waitTime = 2.0f;
-            m_gameConScript.waitTime = 3.0f;
-        }
-
-        if (m_buttonSelect)
-        {
-            if(!onDogButton && !onMonkeyButton && !onPheasantButton)
+            if (dog_onclick)
             {
-                countTime = true;
-                yield return new WaitForSeconds(waitTime);
-
-                countTime = false;
-                m_buttonSelect = false;
+                monkey_button.interactable = false;
+                pheasant_button.interactable = false;
+            }
+            else if (monkey_onclick)
+            {
+                dog_button.interactable = false;
+                pheasant_button.interactable = false;
+            }
+            else if (pheasant_onclick)
+            {
+                dog_button.interactable = false;
+                monkey_button.interactable = false;
             }
             else
             {
-                onDogButton = false;
-                onMonkeyButton = false;
-                onPheasantButton = false;
-
-                countTime = true;
-                yield return new WaitForSeconds(waitTime);
-
-                countTime = false;
-                m_buttonSelect = false;
-            }
-
-            if (onDogButton)
-            {
-                monkeyButton.interactable = false;
-                pheasantButton.interactable = false;
-            }
-            else if (onMonkeyButton)
-            {
-                dogButton.interactable = false;
-                pheasantButton.interactable = false;
-            }
-            else if (onPheasantButton)
-            {
-                dogButton.interactable = false;
-                monkeyButton.interactable = false;
-            }
-            else
-            {
-                dogButton.interactable = false;
-                monkeyButton.interactable = false;
-                pheasantButton.interactable = false;
+                dog_button.interactable = false;
+                monkey_button.interactable = false;
+                pheasant_button.interactable = false;
             }
         }
+        
+
+        yield return new WaitForSeconds(2.0f);
     }
 }
