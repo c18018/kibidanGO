@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class h_Master : MonoBehaviour
 {
-    [System.NonSerialized] public int dango_co = 10;
+    [System.NonSerialized] public int dango_co = 5;
 
     [System.NonSerialized] public bool water = false;
     [System.NonSerialized] public bool mochi = false;
