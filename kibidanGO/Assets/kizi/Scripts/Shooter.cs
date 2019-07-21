@@ -14,8 +14,8 @@ public class Shooter : MonoBehaviour
     public int shotCount;
     h_Master Master;
     public Text shotCountText;
-    
 
+    AudioSource button;
     // Use this for initialization
     void Start()
     {
@@ -23,6 +23,7 @@ public class Shooter : MonoBehaviour
         shotCount = Master.dango_co;
         shotCountText.text = shotCount.ToString();
         Debug.Log("trtrtr");
+        button = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,9 +34,10 @@ public class Shooter : MonoBehaviour
     }
     public void OnClick()
     {
+        button.Play();
         if (shotCount > 0)
         {
-
+            
             //Debug.Log("jfgpejagpnfp");
             GameObject Kibidango = (GameObject)Instantiate(
                 Kibidango2, transform.position, Quaternion.identity
@@ -59,8 +61,13 @@ public class Shooter : MonoBehaviour
     }
     public void Return()
     {
-        
-        SceneManager.LoadScene("ARCamera");
+        button.Play();
         Master.dango_co = shotCount;
+        Invoke("returnScene", 0.5f);
+    }
+
+    void returnScene()
+    {
+        SceneManager.LoadScene("ARCamera");
     }
 }
