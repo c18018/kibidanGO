@@ -8,6 +8,7 @@ public class a_TouchObj : MonoBehaviour
 {
     private h_Master master = null;
     public Image mochi, water, sugar = null;
+    
 
     AudioSource audio;
     public AudioClip button;
@@ -54,16 +55,21 @@ public class a_TouchObj : MonoBehaviour
             if(hit.collider.tag == "Dog" && dogScene)
             {
                 SceneManager.LoadScene("DogScene");
+               
             }
 
             if (hit.collider.tag == "Monkey" && monkeyScene)
             {
                 SceneManager.LoadScene("MonkeyScene");
+                
             }
 
-            if (hit.collider.tag == "Pheasant" && kijiScene)
+            if (hit.collider.tag == "Pheasant")
             {
-                SceneManager.LoadScene("kizi");
+                //SceneManager.LoadScene("kizi");
+                master.PheasantStatus();
+                Invoke("sceneRe", 0.5f);
+
             }
 
             if (hit.collider.tag == "Mochi" && mochiTf)
@@ -114,4 +120,5 @@ public class a_TouchObj : MonoBehaviour
     {
         SceneManager.LoadScene("HomeScene");
     }
+    
 }
