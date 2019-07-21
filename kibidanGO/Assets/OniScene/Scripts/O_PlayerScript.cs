@@ -53,7 +53,7 @@ public class O_PlayerScript : MonoBehaviour
         // Animatorを取得
         dog_animator = GameObject.FindGameObjectWithTag("Dog").GetComponent<Animator>();
         monkey_animator = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
-        //pheasant_animator = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Animator>();
+        pheasant_animator = GameObject.FindGameObjectWithTag("Pheasant").GetComponent<Animator>();
 
         audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
 
@@ -71,8 +71,6 @@ public class O_PlayerScript : MonoBehaviour
     // プレイヤーのボタン選択時間
     public IEnumerator PlayerButtonSelect()
     {
-        Debug.Log("PlayerButtonSelect()");
-
         dog_onclick = false;
         monkey_onclick = false;
         pheasant_onclick = false;
@@ -127,13 +125,12 @@ public class O_PlayerScript : MonoBehaviour
     // 動物の攻撃
     IEnumerator AnimalAttack()
     {
-        Debug.Log("AnimalAttack()");
         gameSc.damage_log = true;
         if(dog_onclick && !oniSc.oni_lower)
         {
             dog_animator.SetTrigger("dogAttack");
             audioSource.PlayOneShot(sounds[0]);
-            animal_attack = 10;
+            animal_attack = 30;
             oniSc.OniHP -= animal_attack;
             Debug.Log("いぬ　" + animal_attack);
         }
@@ -141,15 +138,15 @@ public class O_PlayerScript : MonoBehaviour
         {
             monkey_animator.SetTrigger("saruAttack");
             audioSource.PlayOneShot(sounds[1]);
-            animal_attack = 15;
+            animal_attack = 20;
             oniSc.OniHP -= animal_attack;
             Debug.Log("さる　" + animal_attack);
         }
         else if(pheasant_onclick && !oniSc.oni_upper)
         {
-            //pheasant_animator.SetTrigger("");
+            pheasant_animator.SetTrigger("kiziFloght");
             audioSource.PlayOneShot(sounds[2]);
-            animal_attack = 20;
+            animal_attack = 10;
             oniSc.OniHP -= animal_attack;
             Debug.Log("きじ　" + animal_attack);
         }

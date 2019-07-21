@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FinishController : MonoBehaviour
 {
+    h_Master Master;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,6 +13,11 @@ public class FinishController : MonoBehaviour
         Invoke("Cancel", 1);
 
         Invoke("True", 1);
+
+        Master = GameObject.FindGameObjectWithTag("Master").GetComponent<h_Master>();
+        Master.water = false;
+        Master.sugar = false;
+        Master.mochi = false;
     }
 
     void False()

@@ -54,7 +54,6 @@ public class h_GameController : MonoBehaviour
 
     void ImageComponentGet()
     {
-        Debug.Log("r_: "+red + "g_: "+green+"b: "+blue);
         if (masterSc.Dog)
         {
             cloud = cloud1;

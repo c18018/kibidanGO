@@ -55,8 +55,6 @@ public class O_OniScript : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("TurnController()");
-
             if(OniHP >= 150)
             {
                 stopTime = 3.0f;
@@ -89,8 +87,6 @@ public class O_OniScript : MonoBehaviour
 
             oni_attackPattern = Random.Range(1, 4);
             audioSource.PlayOneShot(oni_sound);
-
-            Debug.Log("Random" + oni_attackPattern);
 
             if(oni_attackPattern == 1)
             {
