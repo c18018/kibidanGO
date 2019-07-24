@@ -235,7 +235,7 @@ public class d_dangoOp : MonoBehaviour
 
     private void sceneRe()
     {
-        SceneManager.LoadScene("ARCamera");
+        SceneManager.LoadScene("HomeScene");
     }
     
 }

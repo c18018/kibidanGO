@@ -36,6 +36,6 @@ public class m_SceneController : MonoBehaviour
 
     private void sceneRe()
     {
-        SceneManager.LoadScene("ARCamera");
+        SceneManager.LoadScene("HomeScene");
     }
 }
