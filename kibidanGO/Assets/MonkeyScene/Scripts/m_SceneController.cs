@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class m_SceneController : MonoBehaviour
 {
-    private GameObject master = null;
+    private GameObject masterObj = null;
     public GameObject end_display = null;
+    private h_Master master;
     AudioSource button;
 
     private void Start()
     {
-        master = GameObject.FindGameObjectWithTag("Master");
+        masterObj = GameObject.FindGameObjectWithTag("Master");
+        master = masterObj.GetComponent<h_Master>();
         button = GetComponent<AudioSource>();
     }
 
@@ -21,13 +23,14 @@ public class m_SceneController : MonoBehaviour
     {
         Debug.Log(true);
         end_display.SetActive(true);
-        master.GetComponent<h_Master>().Monkey = true;
+        master.Monkey = true;
         return true;
     }
 
     public void returnButton()
     {
         button.Play();
+        master.dango_co--;
         Invoke("sceneRe", 0.5f);
     }
 
