@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/KibiScene.unity
     guid: 061df6997526612469375cf8e0650023
   - enabled: 1
+    path: Assets/Scenes/Kibi_Finish.unity
+    guid: 165d49a0bf85e994e802c132a417e0bb
+  - enabled: 1
     path: Assets/Scenes/ARCamera.unity
     guid: 489e93beee23ce2459a213e7d298288e
   - enabled: 1
@@ -29,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OniScene.unity
     guid: 5ad5c112098b5374d92d2c1422ed2a69
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: fdfa784541add76448e80d9891e21be1
   m_configObjects: {}
