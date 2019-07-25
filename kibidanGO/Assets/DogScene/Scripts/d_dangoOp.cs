@@ -57,10 +57,10 @@ public class d_dangoOp : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetMouseButton(0) && dango_op) Dango_pos();
-        //if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
+        if (Input.GetMouseButton(0) && dango_op) Dango_pos();
+        if (Input.GetMouseButtonUp(0) && dango_op) Dango_throw();
 
-        if (Input.touchCount > 0) TapInput();
+        //if (Input.touchCount > 0) TapInput();
 
     }
 

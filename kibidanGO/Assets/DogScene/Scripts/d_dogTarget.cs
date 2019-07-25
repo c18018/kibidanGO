@@ -10,7 +10,7 @@ public class d_dogTarget : MonoBehaviour
 
     bool dog_display = true; //犬のオブジェクトを表示していいかどうか
 
-    public float nearest = 200.0f; //マーカーを読み取る最短の距離
+    public float nearest = 400.0f; //マーカーを読み取る最短の距離
     public float farthest = 1000.0f; //マーカーを読み取る最長の距離
 
     void Start()
