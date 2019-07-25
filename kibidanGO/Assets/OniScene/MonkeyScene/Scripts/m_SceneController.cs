@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class m_SceneController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class m_SceneController : MonoBehaviour
     public GameObject end_display = null;
     private h_Master master;
     [System.NonSerialized] public int dango_co;
+
+    public Text dangoCountText = null;
     AudioSource button;
 
     private void Start()
@@ -16,6 +19,7 @@ public class m_SceneController : MonoBehaviour
         masterObj = GameObject.FindGameObjectWithTag("Master");
         master = masterObj.GetComponent<h_Master>();
         dango_co = master.dango_co;
+        dangoCountText.text = dango_co.ToString();
         button = GetComponent<AudioSource>();
     }
 
@@ -23,7 +27,8 @@ public class m_SceneController : MonoBehaviour
     // さるを見つけたかどうか
     public bool Monkey()
     {
-        Debug.Log(true);
+        dango_co--;
+        dangoCountText.text = dango_co.ToString();
         end_display.SetActive(true);
         master.Monkey = true;
         return true;
@@ -32,7 +37,7 @@ public class m_SceneController : MonoBehaviour
     public void returnButton()
     {
         button.Play();
-        master.dango_co--;
+        master.dango_co = dango_co;
         Invoke("sceneRe", 0.5f);
     }
 

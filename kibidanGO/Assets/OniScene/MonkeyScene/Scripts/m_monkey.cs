@@ -49,7 +49,7 @@ public class m_monkey : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit) && sceneCtrl.dango_co > 0)
         {
             if (hit.collider.tag == "Monkey" && sceneCtrl.dango_co > 0)
             {
