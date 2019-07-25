@@ -8,12 +8,14 @@ public class m_SceneController : MonoBehaviour
     private GameObject masterObj = null;
     public GameObject end_display = null;
     private h_Master master;
+    [System.NonSerialized] public int dango_co;
     AudioSource button;
 
     private void Start()
     {
         masterObj = GameObject.FindGameObjectWithTag("Master");
         master = masterObj.GetComponent<h_Master>();
+        dango_co = master.dango_co;
         button = GetComponent<AudioSource>();
     }
 

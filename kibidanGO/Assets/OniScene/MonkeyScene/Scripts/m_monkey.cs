@@ -11,10 +11,12 @@ public class m_monkey : MonoBehaviour
     private bool Monkey = false;// さるを見つけたかどうか
 
     public GameObject SceneController = null;
+    m_SceneController sceneCtrl;
     AudioSource monkey_voice;
 
     void Start()
     {
+        sceneCtrl = SceneController.GetComponent<m_SceneController>();
         monkeyPos = GameObject.FindGameObjectsWithTag("MonkeyPos");
         transform.position = monkeyPos[Random.Range(0, monkeyPos.Length)].transform.position;
         monkey_voice = GetComponent<AudioSource>();
@@ -49,10 +51,10 @@ public class m_monkey : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.tag == "Monkey")
+            if (hit.collider.tag == "Monkey" && sceneCtrl.dango_co > 0)
             {
                 Monkey = true;
-                SceneController.GetComponent<m_SceneController>().Monkey();
+                sceneCtrl.Monkey();
             }
         }
 
