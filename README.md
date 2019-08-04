@@ -2,7 +2,7 @@
 
 ## ファイル構成  
 * [Unityデータ](./kibidanGO/)  
-* [ビルドデータ]()  
+* [ビルドデータ](./Executable/)  
 
 ## 概要  
 
@@ -10,12 +10,12 @@
 AR体験型ゲーム  
 
 ## プラットフォーム  
-* [Androidビルドデータ]()  
+* [Androidビルドデータ](./Executable/kibidanGO.apk)  
 
 ## 担当ブログラムファイル  
 * [だんごを投げる操作](./kibidanGO/Assets/DogScene/Scripts/d_dangoOp.cs)  
 * [ARで読み取る距離](./kibidanGO/Assets/DogScene/Scripts/d_dogTarget.cs)  
-* [さるが隠れ場所が変わる](./kibidanGO/Assets/OniScene/MonkeyScene/Scripts/m_monkey.cs)  
+* [さるの隠れ場所が変わる](./kibidanGO/Assets/OniScene/MonkeyScene/Scripts/m_monkey.cs)  
 * [シーン遷移](./kibidanGO/Assets/ARScene/Scripts/a_TouchObj.cs)  
 
 ## ゲームルール  
@@ -38,6 +38,7 @@ Unity 2018.4.2f1
 * 宮城沙耶（プログラマ）  
 
 ## ゲームスクリーンショット  
-![タイトル画面]()  
-![プレイ画面]()  
-![リザルト画面]()  
+![タイトル画面](./ScreenShot/Title.png)  
+![プレイ画面１](/ScreenShot/playScene1.png)  
+![プレイ画面２](./ScreenShot/playScene2.png)  
+![エンディング画面](./ScreenShot/Ending.png)  
